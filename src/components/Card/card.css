@@ -1,0 +1,18 @@
+.card {
+    width: 20%;
+    margin: 10px;
+    box-shadow: -1px 0px 5px -1px rgba(0,0,0,0.66);
+    -webkit-box-shadow: -1px 0px 5px -1px rgba(0,0,0,0.66);
+    -moz-box-shadow: -1px 0px 5px -1px rgba(0,0,0,0.66);
+    padding: 10px;
+}
+
+.card > img {
+    width: 200px;
+    margin-left: 60px;
+}
+
+.card > p {
+    text-align: center;
+    padding: 3px;
+}

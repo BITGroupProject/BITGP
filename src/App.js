@@ -1,5 +1,6 @@
-import "./app.css";
+import "./App.css";
 import { ApplicationProvider } from "./context";
+import HomePage from "./pages/HomePage/HomePage"
 
 import { Route, Switch } from "react-router-dom";
 
@@ -9,7 +10,7 @@ function App() {
 			<Switch>
 				<Route exact path="/">
 					<div className="App">
-						<header className="App-header">Header</header>
+						<HomePage />
 					</div>
 				</Route>
 			</Switch>
