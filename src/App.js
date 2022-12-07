@@ -1,19 +1,21 @@
-import "./App.css";
 import { ApplicationProvider } from "./context";
 import { Route, Switch } from "react-router-dom";
-import Wizard from "./pages/Wizard/Wizard";
+import AllReports from "./pages/AllReports/AllReports";
+import "./app.css";
 
 function App() {
-  return (
-    <ApplicationProvider value={0}>
-      <Switch>
-        <Route exact path="/">
-          {/* <Route exact path="/wizard"> */}
-          <Wizard></Wizard>
-        </Route>
-      </Switch>
-    </ApplicationProvider>
-  );
+	return (
+		<ApplicationProvider value={0}>
+			<Switch>
+				<Route exact path="/">
+					<div className="App">
+						<header className="App-header">Header</header>
+						<AllReports />
+					</div>
+				</Route>
+			</Switch>
+		</ApplicationProvider>
+	);
 }
 
 export default App;
