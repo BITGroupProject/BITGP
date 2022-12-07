@@ -10,8 +10,6 @@ const Card = ({ info, isList }) => {
   const { setModalIsOpen } = useContext(applicationContext)
   
 
-  console.log(info);
-
   return (
     <>
       {isList ? (

@@ -1,25 +1,20 @@
 .company-container {
   width: 100%;
   border: 0.05rem solid darkslategray;
-}
-
-.company-item {
-  border: 0.05rem solid darkslategray;
-  padding: 0.5rem;
-  width: 100%;
-}
-
-.company-item:hover {
-  background-color: lightgrey;
-}
-
-.company-item--selected {
-  background-color: dodgerblue;
-  color: #fff;
+  height: 16rem;
+  overflow-y: scroll;
 }
 
 .company--next-prev {
   display: flex;
   justify-content: space-between;
-  margin: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 0 !important;
+}
+
+.company-search-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
 }

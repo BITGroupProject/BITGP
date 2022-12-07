@@ -2,8 +2,20 @@ import React from "react";
 import "./WizardCard.css";
 
 function WizardCard(props) {
+  const select = function () {
+    props.setActiveCandidate(props.id);
+    props.setCandidateId(props.data.id);
+    props.setCandidateName(props.data.name);
+  };
   return (
-    <div onClick={props.do} className="wizard-card">
+    <div
+      onClick={select}
+      className={
+        props.activeCandidate == props.id
+          ? `wizard-card wizard-card--selected`
+          : `wizard-card`
+      }
+    >
       <img
         className="wizard-card--avatar"
         src="https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-1024.png"

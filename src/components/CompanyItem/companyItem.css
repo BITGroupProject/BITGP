@@ -1,0 +1,15 @@
+.company-item {
+  border: 0.05rem solid darkslategray;
+  padding: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.company-item:hover {
+  background-color: lightgrey;
+}
+
+.company-item--selected {
+  background-color: dodgerblue;
+  color: #fff;
+}
