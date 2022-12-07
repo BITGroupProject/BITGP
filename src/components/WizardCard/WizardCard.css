@@ -30,6 +30,6 @@
 }
 
 .wizard-card--selected {
-  background-color: dodgerblue;
+  background-color: dodgerblue !important;
   color: #fff;
 }

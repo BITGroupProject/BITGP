@@ -6,8 +6,6 @@ import "./card.css";
 const Card = ({ info, isList }) => {
   const date = formattedDate(info?.interviewDate);
 
-  console.log(info);
-
   return (
     <>
       {isList ? (

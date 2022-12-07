@@ -13,20 +13,23 @@ function Candidate(props) {
       </div>
       <section className="candidate-container">
         {candidates.map((el, i) => {
-          console.log(el);
           return (
             <WizardCard
-              do={() => {
-                return `candidates funct`;
-              }}
               key={i}
+              id={i + 1}
               data={el}
+              activeCandidate={props.activeCandidate}
+              setActiveCandidate={props.setActiveCandidate}
+              setCandidateId={props.setCandidateId}
+              setCandidateName={props.setCandidateName}
             ></WizardCard>
           );
         })}
       </section>
       <div className="candidate--next-prev">
-        <Button name="Next"></Button>
+        <div className={props.activeCandidate ? `` : `btn-hidden`}>
+          <Button do={props.next} name="Next"></Button>
+        </div>
       </div>
     </>
   );

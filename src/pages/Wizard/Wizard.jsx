@@ -3,6 +3,7 @@ import AdminHeader from "../../components/AdminHeader/AdminHeader";
 import Candidate from "../../components/Candidate/Candidate";
 import Company from "../../components/Company/Company";
 import ReportDetails from "../../components/ReportDetails/ReportDetails";
+import ReportSuccess from "../../components/ReportSucess/ReportSucess";
 import "./Wizard.css";
 
 function Wizard(props) {
@@ -19,16 +20,80 @@ function Wizard(props) {
     note: "",
   });
 
-  const testVal = 1;
+  const [step, setStep] = useState(1);
+  const [activeCandidate, setActiveCandidate] = useState();
+  const [activeCompany, setActiveCompany] = useState();
+  const [candidateId, setCandidateId] = useState();
+  const [candidateName, setCandidateName] = useState();
+  const [companyId, setCompanyId] = useState();
+  const [companyName, setCompanyName] = useState();
+  const [interviewDate, setInterviewDate] = useState();
+  const [phase, setPhase] = useState();
+  const [status, setStatus] = useState();
+  const [note, setNote] = useState();
+
+  const stepNext = function () {
+    setStep(step + 1);
+  };
+
+  const stepPrev = function () {
+    setStep(step - 1);
+  };
 
   const wizardStep = function (step) {
     let output;
     if (step === 1) {
-      output = <Candidate></Candidate>;
+      output = (
+        <Candidate
+          next={stepNext}
+          prev={stepPrev}
+          step={step}
+          activeCandidate={activeCandidate}
+          setActiveCandidate={setActiveCandidate}
+          setCandidateId={setCandidateId}
+          setCandidateName={setCandidateName}
+        ></Candidate>
+      );
     } else if (step === 2) {
-      output = <Company></Company>;
+      output = (
+        <Company
+          next={stepNext}
+          prev={stepPrev}
+          step={step}
+          activeCompany={activeCompany}
+          setActiveCompany={setActiveCompany}
+          setCompanyId={setCompanyId}
+          setCompanyName={setCompanyName}
+        ></Company>
+      );
     } else if (step === 3) {
-      output = <ReportDetails></ReportDetails>;
+      output = (
+        <ReportDetails
+          next={stepNext}
+          prev={stepPrev}
+          step={step}
+          interviewDate={interviewDate}
+          setInterviewDate={setInterviewDate}
+          setPhase={setPhase}
+          setStatus={setStatus}
+          setNote={setNote}
+        ></ReportDetails>
+      );
+    } else if (step === 4) {
+      output = (
+        <>
+          <ReportSuccess
+            candidateId={candidateId}
+            candidateName={candidateName}
+            companyId={companyId}
+            companyName={companyName}
+            interviewDate={interviewDate}
+            phase={phase}
+            status={status}
+            note={note}
+          ></ReportSuccess>
+        </>
+      );
     }
     return output;
   };
@@ -39,31 +104,31 @@ function Wizard(props) {
       <article className="wizard-container">
         <aside className="progress--side-bar">
           <section className="progress--steps">
-            <div className={testVal >= 1 ? `step step-active` : `step`}>
+            <div className={step >= 1 ? `step step-active` : `step`}>
               <span className="step--number"> 1</span>{" "}
               <span className="step--name">Select Candidate</span>
             </div>{" "}
-            <div className={testVal >= 2 ? `step step-active` : `step`}>
+            <div className={step >= 2 ? `step step-active` : `step`}>
               <span className="step--number"> 2</span>{" "}
               <span className="step--name">Select Company</span>
             </div>{" "}
-            <div className={testVal >= 3 ? `step step-active` : `step`}>
+            <div className={step >= 3 ? `step step-active` : `step`}>
               <span className="step--number"> 3</span>{" "}
               <span className="step--name">Fill Report Detail</span>
             </div>
           </section>
           <section className="progress--completed">
-            <div className={testVal > 1 ? `` : `step-hidden`}>
+            <div className={step > 1 ? `` : `step-hidden`}>
               <div className="progress--detail-title">Candidate</div>
-              <div className="progress--detail">John Doe</div>
+              <div className="progress--detail">{candidateName}</div>
             </div>{" "}
-            <div className={testVal > 2 ? `` : `step-hidden`}>
+            <div className={step > 2 ? `` : `step-hidden`}>
               <div className="progress--detail-title">Company</div>
-              <div className="progress--detail">ACME</div>
+              <div className="progress--detail">{companyName}</div>
             </div>
           </section>
         </aside>
-        <main className="wizard--panel">{wizardStep(testVal)}</main>
+        <main className="wizard--panel">{wizardStep(step)}</main>
       </article>
     </>
   );
