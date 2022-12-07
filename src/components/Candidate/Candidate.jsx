@@ -1,7 +1,7 @@
 import React from "react";
-import SearchBar from "./SearchBar";
-import WizardCard from "./WizardCard";
-import Button from "./Button";
+import SearchBar from "../Search/Search";
+import WizardCard from "../WizardCard/WizardCard";
+import Button from "../Button/Button";
 import "./Candidate.css";
 
 function Candidate() {

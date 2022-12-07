@@ -1,6 +1,6 @@
 import React from "react";
-import SearchBar from "./SearchBar";
-import Button from "./Button";
+import SearchBar from "../Search/Search";
+import Button from "../Button/Button";
 import "./Company.css";
 
 function Company() {

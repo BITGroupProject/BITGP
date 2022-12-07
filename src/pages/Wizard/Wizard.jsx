@@ -1,8 +1,8 @@
 import React from "react";
-import AdminHeader from "../../components/AdminHeader";
-import Candidate from "../../components/Candidate";
-import Company from "../../components/Company";
-import ReportDetails from "../../components/ReportDetails";
+import AdminHeader from "../../components/AdminHeader/AdminHeader";
+import Candidate from "../../components/Candidate/Candidate";
+import Company from "../../components/Company/Company";
+import ReportDetails from "../../components/ReportDetails/ReportDetails";
 import "./Wizard.css";
 
 function Wizard(props) {
