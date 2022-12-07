@@ -27,10 +27,12 @@ const AllReports = () => {
         onChange={(event) => setInputValue(event.target.value)}
         value={inputValue}
       />
-      {/* false -> map  */}
-      {!inputValue && allReports.map((e) => <Card allCards={e} />)}
 
-      {inputValue && searchReports.map((e) => <Card allCards={e} />)}
+      {!inputValue &&
+        allReports.map((e) => <Card info={e} key={e.id} isList={true} />)}
+
+      {inputValue &&
+        searchReports.map((e) => <Card info={e} key={e.id} isList={true} />)}
       {inputValue && !searchReports?.length && <div>Error</div>}
     </div>
   );
