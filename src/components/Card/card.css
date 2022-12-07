@@ -8,11 +8,16 @@
 }
 
 .card > img {
-    width: 200px;
-    margin-left: 60px;
+    width: 60%;
+    margin: 0 auto;
+    display: block;
 }
 
 .card > p {
     text-align: center;
     padding: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }

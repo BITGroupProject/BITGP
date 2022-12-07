@@ -23,7 +23,7 @@ function App() {
 			value={{ allCandidates, allReports, setAllReports }}
 		>
 			<Switch>
-				<Route exact path="/home">
+				<Route path="/home">
 					<HomePage />
 				</Route>
 
