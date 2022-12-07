@@ -1,0 +1,59 @@
+import React from "react";
+import AdminHeader from "../../components/AdminHeader";
+import Candidate from "../../components/Candidate";
+import Company from "../../components/Company";
+import ReportDetails from "../../components/ReportDetails";
+import "./Wizard.css";
+
+function Wizard(props) {
+  const testVal = 3;
+
+  const wizardStep = function (step) {
+    let output;
+    if (step === 1) {
+      output = <Candidate></Candidate>;
+    } else if (step === 2) {
+      output = <Company></Company>;
+    } else if (step === 3) {
+      output = <ReportDetails></ReportDetails>;
+    }
+    return output;
+  };
+
+  return (
+    <>
+      <AdminHeader></AdminHeader>
+      <article className="wizard-container">
+        <aside className="progress--side-bar">
+          <section className="progress--steps">
+            <div className={testVal >= 1 ? `step step-active` : `step`}>
+              <span className="step--number"> 1</span>{" "}
+              <span className="step--name">Select Candidate</span>
+            </div>{" "}
+            <div className={testVal >= 2 ? `step step-active` : `step`}>
+              <span className="step--number"> 2</span>{" "}
+              <span className="step--name">Select Company</span>
+            </div>{" "}
+            <div className={testVal >= 3 ? `step step-active` : `step`}>
+              <span className="step--number"> 3</span>{" "}
+              <span className="step--name">Fill Report Detail</span>
+            </div>
+          </section>
+          <section className="progress--completed">
+            <div className={testVal > 1 ? `` : `step-hidden`}>
+              <div className="progress--detail-title">Candidate</div>
+              <div className="progress--detail">John Doe</div>
+            </div>{" "}
+            <div className={testVal > 2 ? `` : `step-hidden`}>
+              <div className="progress--detail-title">Company</div>
+              <div className="progress--detail">ACME</div>
+            </div>
+          </section>
+        </aside>
+        <main className="wizard--panel">{wizardStep(testVal)}</main>
+      </article>
+    </>
+  );
+}
+
+export default Wizard;

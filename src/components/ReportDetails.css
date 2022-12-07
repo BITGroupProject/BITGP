@@ -1,0 +1,41 @@
+.report-input-fields {
+  display: flex;
+  flex-direction: row;
+}
+
+.report-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0.5rem;
+}
+
+.report-input-label {
+  color: darkslategray;
+  margin: 0.5rem 0;
+  font-size: 80%;
+}
+
+.report-input-comment {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+select,
+input {
+  background-color: #fff;
+  border: 0.1rem solid lightgrey;
+  padding: 0.05rem;
+  border-radius: 0.1rem;
+}
+
+.report-textarea {
+  height: 5rem;
+}
+
+.company--next-prev {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
