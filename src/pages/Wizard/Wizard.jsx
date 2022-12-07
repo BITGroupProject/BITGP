@@ -40,11 +40,11 @@ function Wizard(props) {
             </div>
           </section>
           <section className="progress--completed">
-            <div>
+            <div className={testVal > 1 ? `` : `step-hidden`}>
               <div className="progress--detail-title">Candidate</div>
               <div className="progress--detail">John Doe</div>
             </div>{" "}
-            <div>
+            <div className={testVal > 2 ? `` : `step-hidden`}>
               <div className="progress--detail-title">Company</div>
               <div className="progress--detail">ACME</div>
             </div>

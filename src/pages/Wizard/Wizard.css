@@ -55,3 +55,7 @@
 .step-active > .step--number {
   border: 0.1rem solid black;
 }
+
+.step-hidden {
+  display: none;
+}
