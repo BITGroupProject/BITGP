@@ -7,19 +7,6 @@ import ReportSuccess from "../../components/ReportSucess/ReportSucess";
 import "./Wizard.css";
 
 function Wizard(props) {
-  let [report, setReport] = useState({
-    id: 0,
-    candidateId: 0,
-    candidateName: "",
-    companyId: 0,
-    companyName: "",
-    interviewDate:
-      "Sun Aug 29 2021 09:55:42 GMT+0200 (Central European Summer Time)",
-    phase: 1,
-    status: true,
-    note: "",
-  });
-
   const [step, setStep] = useState(1);
   const [activeCandidate, setActiveCandidate] = useState();
   const [activeCompany, setActiveCompany] = useState();
