@@ -2,10 +2,23 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 16rem;
 }
 
 .candidate--next-prev {
   display: flex;
   justify-content: right;
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
+}
+
+.candidate-search-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2rem 1rem 0;
+}
+
+.btn-hidden {
+  opacity: 0;
 }
