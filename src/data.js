@@ -288,6 +288,7 @@ export const reports = [
 		note: "Iure ea est molestias. Et iste fuga. Delectus corrupti natus impedit architecto temporibus eos quis.",
 	},
 ];
+
 export const candidates = [
 	{
 		id: 56479186,
