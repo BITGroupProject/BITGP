@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Button from "../components/Button";
+import Button from "../Button/Button";
 import "./AdminHeader.css";
 
 export class AdminHeader extends Component {
