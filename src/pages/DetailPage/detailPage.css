@@ -1,0 +1,15 @@
+#detailPage > .profile{
+    display: flex;
+    justify-content: space-between;
+}
+
+#detailPage >  .profile >  .profile-info{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 60px;
+}
+#detailPage >  .profile >  .profile-info > div {
+    flex-basis: 50%;
+}

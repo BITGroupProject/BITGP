@@ -1,0 +1,33 @@
+.wizard-card {
+  box-sizing: border-box;
+  display: flex;
+  background-color: rgb(214, 226, 240);
+  min-width: 45%;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.wizard-card:hover {
+  background-color: lightblue;
+  border: 0.1rem solid dodgerblue;
+}
+
+.wizard-card--avatar {
+  height: 4rem;
+}
+
+.wizard-card--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wizard-card--email {
+  color: darkslategray;
+  font-size: 75%;
+}
+
+.wizard-card--selected {
+  background-color: dodgerblue;
+  color: #fff;
+}
