@@ -1,12 +1,9 @@
 import React from "react";
 import "./search.css";
-import "./search.svg"
+import "./search.svg";
 
 const Search = () => {
-    return (
-    <input type="search" placeholder="Search..." />
-    
-    )
-}
+  return <input className="search-bar" type="search" placeholder="Search..." />;
+};
 
-export default Search
+export default Search;

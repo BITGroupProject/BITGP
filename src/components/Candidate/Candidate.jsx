@@ -1,36 +1,35 @@
 import React from "react";
-import SearchBar from "../Search/Search";
+import Search from "../Search/Search";
 import WizardCard from "../WizardCard/WizardCard";
 import Button from "../Button/Button";
+import { candidates } from "../../data";
 import "./Candidate.css";
 
-function Candidate() {
-  const placeholder = Array(6).fill({
-    id: 56479186,
-    name: "Declan Schaden",
-    birthday:
-      "Sun Jan 31 2021 19:56:57 GMT+0100 (Central European Standard Time)",
-    email: "Emilia.Veum@hotmail.com",
-    education: "Specialist",
-  });
+function Candidate(props) {
   return (
     <>
-      <SearchBar></SearchBar>
+      <div className="candidate-search-container">
+        <Search></Search>
+      </div>
       <section className="candidate-container">
-        {placeholder.map((el, i) => {
+        {candidates.map((el, i) => {
           return (
             <WizardCard
-              do={() => {
-                return `placeholder funct`;
-              }}
               key={i}
+              id={i + 1}
               data={el}
+              activeCandidate={props.activeCandidate}
+              setActiveCandidate={props.setActiveCandidate}
+              setCandidateId={props.setCandidateId}
+              setCandidateName={props.setCandidateName}
             ></WizardCard>
           );
         })}
       </section>
       <div className="candidate--next-prev">
-        <Button>Next</Button>
+        <div className={props.activeCandidate ? `` : `btn-hidden`}>
+          <Button do={props.next} name="Next"></Button>
+        </div>
       </div>
     </>
   );
