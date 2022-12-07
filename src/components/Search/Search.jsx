@@ -1,6 +1,6 @@
 import React from "react";
 import "./search.css";
-import "./search.svg"
+import "./search.svg";
 
 const Search = ({ inputValue, setInputValue }) => {
 
@@ -17,4 +17,4 @@ const Search = ({ inputValue, setInputValue }) => {
     )
 }
 
-export default Search
+export default Search;
