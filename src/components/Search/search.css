@@ -1,9 +1,8 @@
-input {
-    background-image: url(./search.svg);
-    background-repeat: no-repeat;
-    border-radius: 10px;
-    padding: 5px 5px 5px 25px;
-    -webkit-appearance: none;
-    border: 1px solid grey;
+.search-bar {
+  background-image: url(./search.svg);
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  padding: 5px 5px 5px 25px;
+  -webkit-appearance: none;
+  border: 1px solid grey;
 }
-

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminHeader from "../../components/AdminHeader/AdminHeader";
 import Candidate from "../../components/Candidate/Candidate";
 import Company from "../../components/Company/Company";
@@ -6,7 +6,9 @@ import ReportDetails from "../../components/ReportDetails/ReportDetails";
 import "./Wizard.css";
 
 function Wizard(props) {
-  const testVal = 3;
+  let [stage, setStage] = useState(1);
+
+  const testVal = 1;
 
   const wizardStep = function (step) {
     let output;

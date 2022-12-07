@@ -9,3 +9,10 @@
   justify-content: right;
   margin: 2rem 0;
 }
+
+.candidate-search-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2rem 1rem 0;
+}

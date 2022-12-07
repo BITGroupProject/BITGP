@@ -10,8 +10,8 @@ export class AdminHeader extends Component {
       <header className="admin-header">
         <h2 className="admin-header--logo">Reports Administration</h2>
         <div className="btn-container">
-          <Button></Button>
-          <Button></Button>
+          <Button name="Reports"></Button>
+          <Button name="Create Report"></Button>
         </div>
       </header>
     );

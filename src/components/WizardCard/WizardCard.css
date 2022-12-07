@@ -4,10 +4,12 @@
   background-color: rgb(214, 226, 240);
   min-width: 45%;
   margin: 0.5rem;
+  border: 0.1rem solid rgb(214, 226, 240);
   cursor: pointer;
 }
 
 .wizard-card:hover {
+  box-sizing: border-box;
   background-color: lightblue;
   border: 0.1rem solid dodgerblue;
 }

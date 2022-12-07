@@ -11,7 +11,9 @@ function Company() {
   });
   return (
     <>
-      <SearchBar></SearchBar>
+      <div className="company-search-container">
+        <SearchBar></SearchBar>
+      </div>
       <section className="company-container">
         {placeholder.map((el, i) => {
           return (
@@ -24,8 +26,8 @@ function Company() {
         })}
       </section>
       <div className="company--next-prev">
-        <Button>Back</Button>
-        <Button>Next</Button>
+        <Button name="Back"></Button>
+        <Button name="Next"></Button>
       </div>
     </>
   );

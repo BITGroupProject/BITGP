@@ -1,7 +1,8 @@
 import React from "react";
-import SearchBar from "../Search/Search";
+import Search from "../Search/Search";
 import WizardCard from "../WizardCard/WizardCard";
 import Button from "../Button/Button";
+import SearchBar from "../SearchBar/SearchBar";
 import "./Candidate.css";
 
 function Candidate() {
@@ -15,7 +16,9 @@ function Candidate() {
   });
   return (
     <>
-      <SearchBar></SearchBar>
+      <div className="candidate-search-container">
+        <Search></Search>
+      </div>
       <section className="candidate-container">
         {placeholder.map((el, i) => {
           return (
@@ -30,7 +33,7 @@ function Candidate() {
         })}
       </section>
       <div className="candidate--next-prev">
-        <Button>Next</Button>
+        <Button name="Next"></Button>
       </div>
     </>
   );
