@@ -1,0 +1,24 @@
+#loginPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+#loginPage > .login-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#loginPage > div {
+    margin: 10px 0;
+}
+
+#loginPage  input {
+    width: 250px;
+    display: block;
+    margin: 5px 0;
+    padding: 5px 12px;
+    border-radius: 5px;
+}
