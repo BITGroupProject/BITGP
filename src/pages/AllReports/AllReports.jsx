@@ -9,15 +9,29 @@ const AllReports = () => {
   const [allReports, setAllReports] = useState(reports);
   const [inputValue, setInputValue] = useState("");
 
-  const searchReports = allReports.filter((e) => { const d = e.companyName.toLowerCase(); return d.includes(inputValue.toLowerCase())});
-
-
+  const searchReports = allReports.filter((e) => {
+    const companyName = e.companyName.toLowerCase();
+    const candidateName = e.candidateName.toLowerCase();
+    return (
+      companyName.includes(inputValue.toLowerCase()) ||
+      candidateName.includes(inputValue.toLowerCase())
+    );
+  });
 
   return (
     <div className="allReports">
-      <input type="search" id="search" placeholder="Search..." onChange={(e) => setInputValue(e.target.value)} value={inputValue}/>
-      {!inputValue && allReports.map((e) => (<Card allCards={e} />))}
-      {inputValue && searchReports.map((e) => (<Card allCards={e} />))}
+      <input
+        type="search"
+        id="search"
+        placeholder="Search..."
+        onChange={(event) => setInputValue(event.target.value)}
+        value={inputValue}
+      />
+      {/* false -> map  */}
+      {!inputValue && allReports.map((e) => <Card allCards={e} />)}
+
+      {inputValue && searchReports.map((e) => <Card allCards={e} />)}
+      {inputValue && !searchReports?.length && <div>Error</div>}
     </div>
   );
 };
