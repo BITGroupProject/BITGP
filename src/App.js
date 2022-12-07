@@ -24,42 +24,44 @@ function App() {
 	}, []);
 
 	return (
-		<ApplicationProvider
-			value={{
-				allCandidates,
+		<>
+			<ApplicationProvider
+				value={{
+					allCandidates,
 
-				allReports,
-				setAllReports,
+					allReports,
+					setAllReports,
 
-				token,
-				setToken,
-			}}
-		>
-			<Switch>
-				<Route exact path="/">
-					<LoginPage />
-				</Route>
-				<Route path="/home">
-					<HomePage />
-				</Route>
-				<Route path="/reports">
-					<AllReports />
-				</Route>
-				<Route path="/wizard">
-					<Wizard />
-				</Route>
-				<Route
-					path="/details/:id"
-					render={(routerObject) => (
-						<DetailPage id={routerObject.match.params.id} />
-					)}
-				/>
+					token,
+					setToken,
+				}}
+			>
+				<Switch>
+					<Route exact path="/">
+						<LoginPage />
+					</Route>
+					<Route path="/home">
+						<HomePage />
+					</Route>
+					<Route path="/reports">
+						<AllReports />
+					</Route>
+					<Route path="/wizard">
+						<Wizard />
+					</Route>
+					<Route
+						path="/details/:id"
+						render={(routerObject) => (
+							<DetailPage id={routerObject.match.params.id} />
+						)}
+					/>
 
-				<Route path="*">
-					<div>Error Page</div>
-				</Route>
-			</Switch>
-		</ApplicationProvider>
+					<Route path="*">
+						<div>Error Page</div>
+					</Route>
+				</Switch>
+			</ApplicationProvider>
+		</>
 	);
 }
 

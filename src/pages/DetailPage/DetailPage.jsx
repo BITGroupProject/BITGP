@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import BackgroundAnimation from "../../components/BackgroundAnimation/BackgroundAnimation";
 import Table from "../../components/Table/Table";
 import { applicationContext } from "../../context";
 
@@ -21,26 +22,28 @@ const DetailPage = ({ id }) => {
 
 	return (
 		<>
+			<BackgroundAnimation />
 			<section id="detailPage">
-				<div className="profile">
+				<div className="profile bg-glass">
 					<figure className="profile-image">
 						<img
-							src={candidate?.avatar}
+							// src={candidate?.avatar}
+							src="https://avatarfiles.alphacoders.com/161/161365.jpg"
 							alt=""
 							width="300"
 							height="300"
 						/>
 					</figure>
 					<div className="profile-info">
-						<div>
+						<div className="bg-glass bg-glass--animated">
 							<h4>{candidate?.name}</h4>
 							<small>Name</small>
 						</div>
-						<div>
+						<div className="bg-glass bg-glass--animated">
 							<h4>{candidate?.email}</h4>
 							<small>Email</small>
 						</div>
-						<div>
+						<div className="bg-glass bg-glass--animated">
 							<h4>
 								{candidate?.birthday &&
 									new Date(candidate?.birthday)
@@ -49,7 +52,7 @@ const DetailPage = ({ id }) => {
 							</h4>
 							<small>Date of birthday</small>
 						</div>
-						<div>
+						<div className="bg-glass bg-glass--animated">
 							<h4>{candidate?.education}</h4>
 							<small>Education</small>
 						</div>
