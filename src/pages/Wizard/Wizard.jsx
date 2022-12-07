@@ -6,7 +6,18 @@ import ReportDetails from "../../components/ReportDetails/ReportDetails";
 import "./Wizard.css";
 
 function Wizard(props) {
-  let [stage, setStage] = useState(1);
+  let [report, setReport] = useState({
+    id: 0,
+    candidateId: 0,
+    candidateName: "",
+    companyId: 0,
+    companyName: "",
+    interviewDate:
+      "Sun Aug 29 2021 09:55:42 GMT+0200 (Central European Summer Time)",
+    phase: 1,
+    status: true,
+    note: "",
+  });
 
   const testVal = 1;
 
