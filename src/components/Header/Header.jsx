@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header>
             <span>Interviews Reports</span>
-            <Link to="/">Candidates</Link>
+            <Link to="/home">Candidates</Link>
         </header>
     )
 }
