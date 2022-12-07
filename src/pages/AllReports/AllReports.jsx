@@ -6,20 +6,29 @@ import { reports } from "./../../data";
 import SearchIcon from "./SearchIcon.svg";
 
 const AllReports = () => {
-  const [allReports, setAllReports] = useState(reports);
-  const [inputValue, setInputValue] = useState("");
+	const [allReports, setAllReports] = useState(reports);
+	const [inputValue, setInputValue] = useState("");
 
-  const searchReports = allReports.filter((e) => { const d = e.companyName.toLowerCase(); return d.includes(inputValue.toLowerCase())});
+	const searchReports = allReports.filter((e) => {
+		const d = e.companyName.toLowerCase();
+		return d.includes(inputValue.toLowerCase());
+	});
 
-
-
-  return (
-    <div className="allReports">
-      <input type="search" id="search" placeholder="Search..." onChange={(e) => setInputValue(e.target.value)} value={inputValue}/>
-      {!inputValue && allReports.map((e) => (<Card allCards={e} />))}
-      {inputValue && searchReports.map((e) => (<Card allCards={e} />))}
-    </div>
-  );
+	return (
+		<div className="allReports">
+			<input
+				type="search"
+				id="search"
+				placeholder="Search..."
+				onChange={(e) => setInputValue(e.target.value)}
+				value={inputValue}
+			/>
+			{!inputValue &&
+				allReports.map((e) => <Card info={e} isList={true} />)}
+			{inputValue &&
+				searchReports.map((e) => <Card info={e} isList={true} />)}
+		</div>
+	);
 };
 
 export default AllReports;

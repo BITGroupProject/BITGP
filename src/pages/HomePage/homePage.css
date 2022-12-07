@@ -1,0 +1,15 @@
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px 5px;
+}
+
+.candidates-search {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(165, 163, 163);
+    margin: 30px;
+    padding: 15px 0;
+    font-size: 20px;
+}
