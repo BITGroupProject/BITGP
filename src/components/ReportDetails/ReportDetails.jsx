@@ -1,6 +1,6 @@
 import React from "react";
 import "./ReportDetails.css";
-import Button from "./Button";
+import Button from "../Button/Button";
 
 function ReportDetails() {
   return (
