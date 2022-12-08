@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./header.css";
-import Button from "../Button/Button";
-import {Link} from "react-router-dom"
+import { Link, useHistory } from "react-router-dom";
+import { applicationContext } from "../../context";
 
 
 const Header = () => {
+    const { setToken } = useContext(applicationContext);
+    const history = useHistory();
+
+    const logout = () => {
+        setToken("");
+        localStorage.removeItem("token");
+        history.push("/");
+    }
+
+
     return (
         <header>
-            <span>Interviews Reports</span>
-            <Link to="/home">Candidates</Link>
+            <span>Blazing fast</span>
+            <div className="middle-buttons">
+                <Link to="/home">Candidates</Link>
+                <Link to="/reports">Reports</Link>
+                <Link to="/wizard">Create report</Link>
+            </div>
+            <Link to="/" onClick={logout}>Sign out</Link>
         </header>
     )
 }
