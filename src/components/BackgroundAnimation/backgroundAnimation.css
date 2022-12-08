@@ -1,6 +1,8 @@
 *:has(>.bg-glass--animated){
     overflow: hidden;
 }
+
+
 .bg-glass{
     background: rgba( 255, 255, 255, 0.3 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -28,9 +30,6 @@
     transform: skewX(45deg) translateX(calc(100% + 200%))
 }
 
-.bg-glass--animated:hover {
-    transform: translateY(-10px);
-}
 .bg-glass--animated:hover::before {
     transform: skewX(45deg) translateX(calc( -100% - 50%))
 }

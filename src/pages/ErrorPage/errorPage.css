@@ -1,0 +1,25 @@
+#errorPage{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#errorPage > div {
+    width: max-content;
+    padding: 60px;
+    color: #fff;
+    text-align: center;
+}
+
+#errorPage h3 {
+    margin: 20px 0 30px 0;
+}
+#errorPage button {
+    display: block;
+    margin-left: auto;
+    background: -webkit-linear-gradient(43deg, #FFCC70 0%, #C850C0 46%, #4158D0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}

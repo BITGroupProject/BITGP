@@ -10,64 +10,83 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
 import { candidates, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import { parseJwt } from "./utils/utils";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
-  const [allCandidates, setAllCandidates] = useState([]);
-  const [allReports, setAllReports] = useState([]);
-  const [token, setToken] = useState(
-    localStorage.getItem("token") ? localStorage.getItem("token") : ""
-  );
+	const [allCandidates, setAllCandidates] = useState([]);
+	const [allReports, setAllReports] = useState([]);
+	const [token, setToken] = useState(
+		localStorage.getItem("token") ? localStorage.getItem("token") : ""
+	);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() => {
-    setAllCandidates(candidates);
-    setAllReports(reports);
-  }, []);
+	useEffect(() => {
+		setAllCandidates(candidates);
+		setAllReports(reports);
+	}, []);
 
-  return (
-    <>
-      <ApplicationProvider
-        value={{
-          allCandidates,
+	useEffect(() => {
+		const parsedData = token && parseJwt(token);
+		setIsAdmin(parsedData.email === "admin@admin.com");
+	}, [token]);
 
-          allReports,
-          setAllReports,
+	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
 
-          token,
-          setToken,
+	return (
+		<>
+			<ApplicationProvider
+				value={{
+					allCandidates,
 
-          setModalIsOpen,
-          modalIsOpen,
-        }}
-      >
-        <Switch>
-          <Route exact path="/">
-            <LoginPage />
-          </Route>
-          <Route path="/home">
-            <HomePage />
-          </Route>
-          <Route path="/reports">
-            <AllReports />
-          </Route>
-          <Route path="/wizard">
-            <Wizard />
-          </Route>
-          <Route
-            path="/details/:id"
-            render={(routerObject) => (
-              <DetailPage id={routerObject.match.params.id} />
-            )}
-          />
+					allReports,
+					setAllReports,
 
-          <Route path="*">
-            <div>Error Page</div>
-          </Route>
-        </Switch>
-      </ApplicationProvider>
-    </>
-  );
+					token,
+					setToken,
+
+					setModalIsOpen,
+					modalIsOpen,
+
+					isAdmin,
+
+					apiUrl,
+				}}
+			>
+				<Switch>
+					<Route exact path="/">
+						<LoginPage />
+					</Route>
+
+					<Route exact path="/home">
+						<HomePage />
+					</Route>
+
+					<Route exact path="/reports">
+						<AllReports />
+					</Route>
+
+					<Route exact path="/wizard">
+						<Wizard />
+					</Route>
+
+					<Route
+						exact
+						path="/details/:id"
+						render={(routerObject) => (
+							<DetailPage id={routerObject.match.params.id} />
+						)}
+					/>
+
+					<Route path="*">
+						<ErrorPage />
+					</Route>
+				</Switch>
+			</ApplicationProvider>
+		</>
+	);
 }
 
 export default App;
