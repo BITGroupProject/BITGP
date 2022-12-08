@@ -14,17 +14,15 @@ function Company(props) {
       <section className="company-container">
         {candidates.map((el, i) => {
           return (
-            <>
-              <CompanyItem
-                data={el}
-                key={`company-` + i}
-                id={i + 1}
-                activeCompany={props.activeCompany}
-                setActiveCompany={props.setActiveCompany}
-                setCompanyId={props.setCompanyId}
-                setCompanyName={props.setCompanyName}
-              ></CompanyItem>
-            </>
+            <CompanyItem
+              data={el}
+              key={`company-` + i}
+              id={i + 1}
+              activeCompany={props.activeCompany}
+              setActiveCompany={props.setActiveCompany}
+              setCompanyId={props.setCompanyId}
+              setCompanyName={props.setCompanyName}
+            ></CompanyItem>
           );
         })}
       </section>

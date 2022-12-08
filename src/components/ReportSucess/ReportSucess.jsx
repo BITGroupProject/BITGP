@@ -19,14 +19,14 @@ function ReportSucess(props) {
       note: props.note,
     };
 
-    // console.log(token);
-    // console.log(entry);
+    console.log(token);
+    console.log(entry);
 
-    fetch("http://localhost:3333/api/reports", {
+    fetch("https://node-api-krmk.onrender.com/api/reports", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + { token },
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(entry),
     })
@@ -37,7 +37,9 @@ function ReportSucess(props) {
       .catch((error) => {
         console.error("Error:", error);
       });
+    console.log(token);
   }, []);
+
   return (
     <>
       <div className="report-success-container">

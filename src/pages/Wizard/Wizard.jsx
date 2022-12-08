@@ -15,9 +15,9 @@ function Wizard(props) {
   const [companyId, setCompanyId] = useState();
   const [companyName, setCompanyName] = useState();
   const [interviewDate, setInterviewDate] = useState();
-  const [phase, setPhase] = useState();
-  const [status, setStatus] = useState();
-  const [note, setNote] = useState();
+  const [phase, setPhase] = useState(`CV`);
+  const [status, setStatus] = useState(false);
+  const [note, setNote] = useState(``);
 
   const stepNext = function () {
     setStep(step + 1);
