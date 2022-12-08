@@ -105,11 +105,11 @@ function Wizard(props) {
             </div>
           </section>
           <section className="progress--completed">
-            <div className={step > 1 ? `` : `step-hidden`}>
+            <div className={candidateName ? `` : `step-hidden`}>
               <div className="progress--detail-title">Candidate</div>
               <div className="progress--detail">{candidateName}</div>
             </div>{" "}
-            <div className={step > 2 ? `` : `step-hidden`}>
+            <div className={companyName ? `` : `step-hidden`}>
               <div className="progress--detail-title">Company</div>
               <div className="progress--detail">{companyName}</div>
             </div>
