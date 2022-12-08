@@ -18,6 +18,9 @@ function App() {
 		localStorage.getItem("token") ? localStorage.getItem("token") : ""
 	);
 
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	
+
 	useEffect(() => {
 		setAllCandidates(candidates);
 		setAllReports(reports);
@@ -34,6 +37,9 @@ function App() {
 
 					token,
 					setToken,
+          
+          setModalIsOpen, 
+          modalIsOpen 
 				}}
 			>
 				<Switch>
@@ -62,6 +68,7 @@ function App() {
 				</Switch>
 			</ApplicationProvider>
 		</>
+
 	);
 }
 
