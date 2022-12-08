@@ -1,13 +1,14 @@
-// import React from 'react'
 import React, { useState, useContext } from "react";
 import Card from "../../components/Card/Card";
 import "./allReports.css";
 import { reports } from "./../../data";
 import SearchIcon from "./SearchIcon.svg";
+
 import Footer from "../../components/Footer/Footer";
 import AdminHeader from "../../components/AdminHeader/AdminHeader";
-import { applicationContext } from "./../../context"
+import { applicationContext } from "./../../context";
 import Modal from "../../components/Modal/Modal";
+import Search from "../../components/Search/Search";
 
 const AllReports = () => {
   // const [allReports, setAllReports] = useState(reports);
@@ -25,17 +26,11 @@ const AllReports = () => {
 
   return (
     <>
+      <Modal />
       <AdminHeader button1="button1" button2="button2" />
-      <Modal/>
-      <div className="allReports">
 
-        <input
-          type="search"
-          id="search"
-          placeholder="Search..."
-          onChange={(event) => setInputValue(event.target.value)}
-          value={inputValue}
-        />
+      <div className="allReports">
+        <Search setInputValue={setInputValue} inputValue={inputValue} />
 
         {!inputValue &&
           allReports.map((e) => <Card info={e} key={e.id} isList={true} />)}
@@ -43,8 +38,6 @@ const AllReports = () => {
         {inputValue &&
           searchReports.map((e) => <Card info={e} key={e.id} isList={true} />)}
         {inputValue && !searchReports?.length && <div>Error</div>}
-
-        
       </div>
 
       <Footer />

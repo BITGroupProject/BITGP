@@ -1,8 +1,8 @@
-.search-bar {
-  background-image: url(./search.svg);
-  background-repeat: no-repeat;
-  border-radius: 10px;
-  padding: 5px 5px 5px 25px;
-  -webkit-appearance: none;
-  border: 1px solid grey;
+#search {
+    background-image: url(./search.svg);
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 5px 5px 5px 35px;
+    -webkit-appearance: none;
+    border: 1px solid grey;
 }

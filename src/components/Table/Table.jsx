@@ -4,6 +4,8 @@ import { useState, useContext, useEffect } from "react";
 import { applicationContext } from "../../context";
 import openModal from "./../../assets/open-modal.png";
 
+import "./table.css";
+
 const Table = ({ id }) => {
 	const [reports, setReports] = useState([]);
 	const { allReports } = useContext(applicationContext);
@@ -21,35 +23,42 @@ const Table = ({ id }) => {
 
 	return (
 		<>
-			<table width="100%" border="1">
-				<thead>
-					<tr>
+			<table id="candidateReports">
+				{/* <thead>
+					<tr className="bg-glass">
 						<th>Company</th>
 						<th>Interview date</th>
 						<th colSpan={2}>Status</th>
 					</tr>
-				</thead>
+				</thead> */}
 
 				<tbody>
 					{reports.map((element) => (
-						<tr key={element?.id}>
-							<td>{element?.companyName}</td>
+						<tr className="bg-glass" key={element?.id}>
 							<td>
-								{element.interviewDate &&
-									new Date(element?.interviewDate)
-										.toISOString()
-										.split("T")[0]}
+								<small>company</small>
+								<h3>{element?.companyName}</h3>
 							</td>
-							<td>{element.status}</td>
-							<td width="10%">
-								<button>
-									<img
-										src={openModal}
-										alt="Open modal"
-										width="30"
-										height="30"
-									/>
-								</button>
+							<td>
+								<small>interview date</small>
+								<h3>
+									{element.interviewDate &&
+										new Date(element?.interviewDate)
+											.toISOString()
+											.split("T")[0]}
+								</h3>
+							</td>
+							<td>
+								<small>status</small>
+								<h3>{element.status}</h3>
+							</td>
+							<td>
+								<img
+									src={openModal}
+									alt="Open modal"
+									width="30"
+									height="30"
+								/>
 							</td>
 						</tr>
 					))}

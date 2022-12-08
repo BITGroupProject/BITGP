@@ -1,15 +1,26 @@
+#detailPage{
+    padding: 40px 100px;
+
+    color: #fff;
+}
+
 #detailPage > .profile{
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 #detailPage >  .profile >  .profile-info{
     flex-grow: 1;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 20px 60px;
 }
 #detailPage >  .profile >  .profile-info > div {
-    flex-basis: 50%;
-}
+    text-align: center;
+    flex-basis: 40%;
+    padding: 30px;
+    transition: .6s;
+}   
