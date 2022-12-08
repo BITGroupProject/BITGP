@@ -39,7 +39,7 @@
     border: unset;
 }
 
-#loginPage .error{
+#loginPage .errorMessage{
     cursor: pointer;
     
 }
