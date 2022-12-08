@@ -26,7 +26,9 @@ const AllReports = () => {
   return (
     <>
       <AdminHeader button1="button1" button2="button2" />
+      <Modal/>
       <div className="allReports">
+
         <input
           type="search"
           id="search"
@@ -42,7 +44,7 @@ const AllReports = () => {
           searchReports.map((e) => <Card info={e} key={e.id} isList={true} />)}
         {inputValue && !searchReports?.length && <div>Error</div>}
 
-        <Modal/>
+        
       </div>
 
       <Footer />
