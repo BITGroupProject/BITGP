@@ -19,10 +19,14 @@ function App() {
 	const [token, setToken] = useState(
 		localStorage.getItem("token") ? localStorage.getItem("token") : ""
 	);
+	const [modalInfo, setModalInfo] = useState({});
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+
+
 	const [isAdmin, setIsAdmin] = useState(false);
 
+	
 	useEffect(() => {
 		setAllCandidates(candidates);
 		setAllReports(reports);
@@ -47,12 +51,16 @@ function App() {
 					token,
 					setToken,
 
+		  modalInfo, setModalInfo
+
+
 					setModalIsOpen,
 					modalIsOpen,
 
 					isAdmin,
 
 					apiUrl,
+
 				}}
 			>
 				<Switch>
