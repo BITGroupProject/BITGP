@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { applicationContext } from "../../context";
 import { formattedDate } from "../../utils/utils";
+
 import "./card.css";
 import { Link } from "react-router-dom";
 
 const Card = ({ info, isList }) => {
-  const date = formattedDate(info?.interviewDate);
+  const date = formattedDate(info?.interviewDate, ".");
+  const { setModalIsOpen } = useContext(applicationContext)
+  
 
   return (
     <>
@@ -28,6 +32,7 @@ const Card = ({ info, isList }) => {
           </div>
           <div className="eye">
             <svg
+              onClick={() => setModalIsOpen(true)}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -69,6 +74,8 @@ const Card = ({ info, isList }) => {
           <p>{info.email}</p>
         </Link>
       )}
+
+      {/* <Modal modalIsOpen={modalIsOpen} /> */}
     </>
   );
 };

@@ -14,6 +14,9 @@ function App() {
 
 	const [allCandidates, setAllCandidates] = useState([]);
 	const [allReports, setAllReports] = useState([]);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	
+
 
 	useEffect(() => {
 		setAllCandidates(candidates);
@@ -21,7 +24,7 @@ function App() {
 	}, []);
 
 	return (
-		<ApplicationProvider value={{ allCandidates, allReports, setAllReports }}>
+		<ApplicationProvider value={{ allCandidates, allReports, setAllReports, setModalIsOpen, modalIsOpen }}>
 			<Switch>
 				<Route path="/home">
 					<HomePage />
