@@ -10,6 +10,8 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
 import { candidates, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import { parseJwt } from "./utils/utils";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
 	const [allCandidates, setAllCandidates] = useState([]);
@@ -19,12 +21,19 @@ function App() {
 	);
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-	
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	useEffect(() => {
 		setAllCandidates(candidates);
 		setAllReports(reports);
 	}, []);
+
+	useEffect(() => {
+		const parsedData = token && parseJwt(token);
+		setIsAdmin(parsedData.email === "admin@admin.com");
+	}, [token]);
+
+	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
 
 	return (
 		<>
@@ -37,25 +46,34 @@ function App() {
 
 					token,
 					setToken,
-          
-          setModalIsOpen, 
-          modalIsOpen 
+
+					setModalIsOpen,
+					modalIsOpen,
+
+					isAdmin,
+
+					apiUrl,
 				}}
 			>
 				<Switch>
 					<Route exact path="/">
 						<LoginPage />
 					</Route>
-					<Route path="/home">
+
+					<Route exact path="/home">
 						<HomePage />
 					</Route>
-					<Route path="/reports">
+
+					<Route exact path="/reports">
 						<AllReports />
 					</Route>
-					<Route path="/wizard">
+
+					<Route exact path="/wizard">
 						<Wizard />
 					</Route>
+
 					<Route
+						exact
 						path="/details/:id"
 						render={(routerObject) => (
 							<DetailPage id={routerObject.match.params.id} />
@@ -63,12 +81,11 @@ function App() {
 					/>
 
 					<Route path="*">
-						<div>Error Page</div>
+						<ErrorPage />
 					</Route>
 				</Switch>
 			</ApplicationProvider>
 		</>
-
 	);
 }
 
