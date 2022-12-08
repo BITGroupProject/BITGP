@@ -17,7 +17,7 @@ function Company(props) {
             <>
               <CompanyItem
                 data={el}
-                key={+i}
+                key={`company-` + i}
                 id={i + 1}
                 activeCompany={props.activeCompany}
                 setActiveCompany={props.setActiveCompany}

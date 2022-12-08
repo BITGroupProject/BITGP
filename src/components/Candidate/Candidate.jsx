@@ -15,7 +15,7 @@ function Candidate(props) {
         {candidates.map((el, i) => {
           return (
             <WizardCard
-              key={i}
+              key={`candidate-` + i}
               id={i + 1}
               data={el}
               activeCandidate={props.activeCandidate}

@@ -12,64 +12,62 @@ import { candidates, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
-	const [allCandidates, setAllCandidates] = useState([]);
-	const [allReports, setAllReports] = useState([]);
-	const [token, setToken] = useState(
-		localStorage.getItem("token") ? localStorage.getItem("token") : ""
-	);
+  const [allCandidates, setAllCandidates] = useState([]);
+  const [allReports, setAllReports] = useState([]);
+  const [token, setToken] = useState(
+    localStorage.getItem("token") ? localStorage.getItem("token") : ""
+  );
 
-	const [modalIsOpen, setModalIsOpen] = useState(false);
-	
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-	useEffect(() => {
-		setAllCandidates(candidates);
-		setAllReports(reports);
-	}, []);
+  useEffect(() => {
+    setAllCandidates(candidates);
+    setAllReports(reports);
+  }, []);
 
-	return (
-		<>
-			<ApplicationProvider
-				value={{
-					allCandidates,
+  return (
+    <>
+      <ApplicationProvider
+        value={{
+          allCandidates,
 
-					allReports,
-					setAllReports,
+          allReports,
+          setAllReports,
 
-					token,
-					setToken,
-          
-          setModalIsOpen, 
-          modalIsOpen 
-				}}
-			>
-				<Switch>
-					<Route exact path="/">
-						<LoginPage />
-					</Route>
-					<Route path="/home">
-						<HomePage />
-					</Route>
-					<Route path="/reports">
-						<AllReports />
-					</Route>
-					<Route path="/wizard">
-						<Wizard />
-					</Route>
-					<Route
-						path="/details/:id"
-						render={(routerObject) => (
-							<DetailPage id={routerObject.match.params.id} />
-						)}
-					/>
+          token,
+          setToken,
 
-					<Route path="*">
-						<div>Error Page</div>
-					</Route>
-				</Switch>
-			</ApplicationProvider>
-		</>
+          setModalIsOpen,
+          modalIsOpen,
+        }}
+      >
+        <Switch>
+          <Route exact path="/">
+            <LoginPage />
+          </Route>
+          <Route path="/home">
+            <HomePage />
+          </Route>
+          <Route path="/reports">
+            <AllReports />
+          </Route>
+          <Route path="/wizard">
+            <Wizard />
+          </Route>
+          <Route
+            path="/details/:id"
+            render={(routerObject) => (
+              <DetailPage id={routerObject.match.params.id} />
+            )}
+          />
 
-	);
+          <Route path="*">
+            <div>Error Page</div>
+          </Route>
+        </Switch>
+      </ApplicationProvider>
+    </>
+  );
 }
 
 export default App;

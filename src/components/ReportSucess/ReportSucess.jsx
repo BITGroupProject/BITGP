@@ -19,6 +19,9 @@ function ReportSucess(props) {
       note: props.note,
     };
 
+    // console.log(token);
+    // console.log(entry);
+
     fetch("http://localhost:3333/api/reports", {
       method: "POST",
       headers: {
