@@ -84,7 +84,10 @@ const LoginPage = () => {
 							/>
 						</label>
 					</div>
-					<div className="error" onClick={() => setErrorMessage("")}>
+					<div
+						className="errorMessage"
+						onClick={() => setErrorMessage("")}
+					>
 						{errorMessage}
 					</div>
 					<div>

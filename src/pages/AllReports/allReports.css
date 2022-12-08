@@ -19,7 +19,6 @@
 }
 
 
-
 .allReports {
   display: flex;
   flex-direction: column;
@@ -73,9 +72,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .eye svg {
   width: 30%;
   margin-left: 20px;
+  cursor: pointer;
 }

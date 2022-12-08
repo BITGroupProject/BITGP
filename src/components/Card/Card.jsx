@@ -6,8 +6,8 @@ import "./card.css";
 import { Link } from "react-router-dom";
 
 const Card = ({ info, isList }) => {
-	const date = info?.interviewDate && formattedDate(info?.interviewDate, ".");
-	const { setModalIsOpen } = useContext(applicationContext);
+  const date = info?.interviewDate && formattedDate(info?.interviewDate, ".");
+  const { setModalIsOpen, setModalInfo } = useContext(applicationContext);
 
 	return (
 		<>
@@ -77,9 +77,9 @@ const Card = ({ info, isList }) => {
 				</Link>
 			)}
 
-			{/* <Modal modalIsOpen={modalIsOpen} /> */}
-		</>
-	);
+      {/* <Modal modalIsOpen={modalIsOpen} /> */}
+    </>
+  );
 };
 
 export default Card;
