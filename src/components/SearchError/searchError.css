@@ -1,16 +1,17 @@
-.error {
-    border: 1px solid rgb(13,35,86);
-    padding: 10px;
-    color: rgb(113,165,228);
+.search-error {
+  border: 1px solid rgb(13, 35, 86);
+  padding: 10px;
+  color: rgb(113, 165, 228);
+  cursor: default;
 }
-.image{
-    text-align: center;
+.search-error--image {
+  text-align: center;
 }
-.image > img{
-    width: 40%;
+.search-error--image > img {
+  width: 40%;
 }
 
-.error > p {
-    text-align: center;
-    font-size: 20px;
+.search-error > p {
+  text-align: center;
+  font-size: 20px;
 }

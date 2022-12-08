@@ -1,19 +1,30 @@
-import React from "react";
-import SearchBar from "../Search/Search";
+import React, { useState, useContext } from "react";
 import Button from "../Button/Button";
 import CompanyItem from "../CompanyItem/CompanyItem";
 import { candidates } from "../../data";
 import "./Company.css";
 
+import Search from "../../components/Search/Search";
+import SearchError from "../../components/SearchError/SearchError";
+import { applicationContext } from "../../context";
+
 function Company(props) {
+  const [inputValue, setInputValue] = useState("");
+  const { allCandidates } = useContext(applicationContext);
+
+  const searchCandidate = allCandidates.filter((e) => {
+    const candidateName = e.name.toLowerCase();
+
+    return candidateName.includes(inputValue.toLowerCase());
+  });
   return (
     <>
       <div className="company-search-container">
-        <SearchBar></SearchBar>
+        <Search setInputValue={setInputValue} inputValue={inputValue} />{" "}
       </div>
       <section className="company-container">
-        {candidates.map((el, i) => {
-          return (
+        {inputValue &&
+          searchCandidate.map((el, i) => (
             <CompanyItem
               data={el}
               key={`company-` + i}
@@ -23,8 +34,30 @@ function Company(props) {
               setCompanyId={props.setCompanyId}
               setCompanyName={props.setCompanyName}
             ></CompanyItem>
-          );
-        })}
+          ))}
+        {!inputValue &&
+          allCandidates.map((el, i) => (
+            <CompanyItem
+              data={el}
+              key={`company-` + i}
+              id={i + 1}
+              activeCompany={props.activeCompany}
+              setActiveCompany={props.setActiveCompany}
+              setCompanyId={props.setCompanyId}
+              setCompanyName={props.setCompanyName}
+            ></CompanyItem>
+          ))}
+        {inputValue && !searchCandidate?.length && <SearchError />}
+
+        {/* <CompanyItem
+          data={el}
+          key={`company-` + i}
+          id={i + 1}
+          activeCompany={props.activeCompany}
+          setActiveCompany={props.setActiveCompany}
+          setCompanyId={props.setCompanyId}
+          setCompanyName={props.setCompanyName}
+        ></CompanyItem> */}
       </section>
       <div className="company--next-prev">
         <Button do={props.prev} name="Back"></Button>
