@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { applicationContext } from "../../context";
 import { formattedDate } from "../../utils/utils";
 
-
 import "./card.css";
+import { Link } from "react-router-dom";
 
 const Card = ({ info, isList }) => {
   const date = formattedDate(info?.interviewDate, ".");
@@ -68,11 +68,11 @@ const Card = ({ info, isList }) => {
           </div>
         </div>
       ) : (
-        <div className="card">
+        <Link to={`/details/${info.id}`} className="card">
           <img src="https://commentpara.de/img/anonymous.svg" alt="candidate" />
           <p>{info.name}</p>
           <p>{info.email}</p>
-        </div>
+        </Link>
       )}
 
       {/* <Modal modalIsOpen={modalIsOpen} /> */}
