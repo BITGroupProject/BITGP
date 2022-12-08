@@ -47,6 +47,10 @@
     height: 100vh;
 }
 
+.backgroundAnimation ~ * {
+    z-index: 1;
+    position: relative;
+}
 
 .backgroundAnimation .circles{
     position: absolute;

@@ -8,6 +8,8 @@ import Search from "../../components/Search/Search";
 import SearchError from "../../components/SearchError/SearchError";
 import Card from "../../components/Card/Card";
 
+import BackgroundAnimation from "../../components/BackgroundAnimation/BackgroundAnimation";
+
 import { applicationContext } from "../../context";
 
 const Homepage = () => {
@@ -23,23 +25,32 @@ const Homepage = () => {
 	});
 
 	return (
-		<div>
-			<Header />
-			<div className="candidates-search">
-				<span>Candidates</span>
-				<Search setInputValue={setInputValue} inputValue={inputValue} />
-			</div>
-			<div className="card-wrapper">
-				{inputValue && searchCandidate.map((element) => (
-					<Card info={element} isList={false}/>
-				))}
-				{!inputValue && allCandidates.map((element) => (
-					<Card info={element} isList={false}/>
-				))}
-				{inputValue && !searchCandidate?.length && <SearchError />}
-			</div>
-			<Footer />
-		</div>
+		<>
+			<>
+				<div className="homePage">
+					<Header />
+					<main>
+						<BackgroundAnimation />
+						<div className="candidates-search">
+							<span>Candidates</span>
+							<Search setInputValue={setInputValue} inputValue={inputValue} />
+						</div>
+						<div className="card-wrapper">
+							{inputValue && searchCandidate.map((element) => (
+								<Card info={element} isList={false} />
+							))}
+							{!inputValue && allCandidates.map((element) => (
+								<Card info={element} isList={false} />
+							))}
+							{inputValue && !searchCandidate?.length && <SearchError />}
+						</div>
+					</main>
+
+				</div>
+				<Footer />
+			</>
+
+		</>
 	);
 };
 
