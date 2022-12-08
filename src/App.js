@@ -9,11 +9,17 @@ import "./app.css";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
 import { candidates, reports } from "./data";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
-
 	const [allCandidates, setAllCandidates] = useState([]);
 	const [allReports, setAllReports] = useState([]);
+	const [token, setToken] = useState(
+		localStorage.getItem("token") ? localStorage.getItem("token") : ""
+	);
+
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	
 
 	useEffect(() => {
 		setAllCandidates(candidates);
@@ -21,28 +27,48 @@ function App() {
 	}, []);
 
 	return (
-		<ApplicationProvider value={{ allCandidates, allReports, setAllReports }}>
-			<Switch>
-				<Route path="/home">
-					<HomePage />
-				</Route>
+		<>
+			<ApplicationProvider
+				value={{
+					allCandidates,
 
-				<Route path="/reports">
-					<AllReports />
-				</Route>
+					allReports,
+					setAllReports,
 
-				<Route path="/wizard">
-					<Wizard />
-				</Route>
+					token,
+					setToken,
+          
+          setModalIsOpen, 
+          modalIsOpen 
+				}}
+			>
+				<Switch>
+					<Route exact path="/">
+						<LoginPage />
+					</Route>
+					<Route path="/home">
+						<HomePage />
+					</Route>
+					<Route path="/reports">
+						<AllReports />
+					</Route>
+					<Route path="/wizard">
+						<Wizard />
+					</Route>
+					<Route
+						path="/details/:id"
+						render={(routerObject) => (
+							<DetailPage id={routerObject.match.params.id} />
+						)}
+					/>
 
-				<Route
-					path="/details/:id"
-					render={(routerObject) => (
-						<DetailPage id={routerObject.match.params.id} />
-					)}
-				/>
-			</Switch>
-		</ApplicationProvider>
+					<Route path="*">
+						<div>Error Page</div>
+					</Route>
+				</Switch>
+			</ApplicationProvider>
+		</>
+
 	);
 }
 

@@ -1,11 +1,6 @@
-export const formattedDate = (dateString) => {
-    const today = new Date(dateString);
-    const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1; // Months start at 0!
-    let dd = today.getDate();
+export const formattedDate = (dateString, separator="-") => {
+    const today = new Date(dateString).toISOString().split("T")[0];
 
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-
-    return dd + '.' + mm + '.' + yyyy + ".";
+    return today.split("-").reverse().join(separator);
 }
+
