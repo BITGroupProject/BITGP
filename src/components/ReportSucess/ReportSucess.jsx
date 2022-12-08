@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
-import Button from "../Button/Button";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { applicationContext } from "../../context";
 import "./reportSuccess.css";
 
 function ReportSucess(props) {
+  const { token } = useContext(applicationContext);
+
   useEffect(() => {
     let entry = {
       id: 10000000 + Math.round(Math.random() * 89999999),
@@ -16,6 +18,22 @@ function ReportSucess(props) {
       status: props.status,
       note: props.note,
     };
+
+    fetch("http://localhost:3333/api/reports", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + { token },
+      },
+      body: JSON.stringify(entry),
+    })
+      .then((response) => response.json())
+      .then((entry) => {
+        console.log("Success:", entry);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }, []);
   return (
     <>
