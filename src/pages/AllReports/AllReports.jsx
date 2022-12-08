@@ -1,14 +1,13 @@
 import React, { useState, useContext } from "react";
 import Card from "../../components/Card/Card";
 import "./allReports.css";
-import { reports } from "./../../data";
-import SearchIcon from "./SearchIcon.svg";
 
 import Footer from "../../components/Footer/Footer";
 import AdminHeader from "../../components/AdminHeader/AdminHeader";
 import { applicationContext } from "./../../context";
 import Modal from "../../components/Modal/Modal";
 import Search from "../../components/Search/Search";
+import SearchError from "./../../components/SearchError/SearchError"
 
 const AllReports = () => {
   // const [allReports, setAllReports] = useState(reports);
@@ -37,7 +36,7 @@ const AllReports = () => {
 
         {inputValue &&
           searchReports.map((e) => <Card info={e} key={e.id} isList={true} />)}
-        {inputValue && !searchReports?.length && <div>Error</div>}
+        {inputValue && !searchReports?.length && <SearchError/>}
       </div>
 
       <Footer />
