@@ -8,7 +8,6 @@ import "./app.css";
 
 import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
-import { candidates, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
@@ -28,17 +27,24 @@ function App() {
 	const [modalInfo, setModalInfo] = useState({});
 
 	useEffect(() => {
-		setAllCandidates(candidates);
-		setAllReports(reports);
-	}, []);
-
-	useEffect(() => {
 		setIsLogged(!!token);
 		const parsedData = token && parseJwt(token);
 		setIsAdmin(parsedData?.email === "admin@admin.com");
 	}, [token]);
 
 	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
+
+	useEffect(() => {
+		fetch(apiUrl + "/candidates", {
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": "Bearer " + token
+			}
+		})
+			.then(res => res.json())
+			.then(res => setAllCandidates(res))
+			.catch(error => console.log(error))
+	}, [token])
 
 	return (
 		<>
