@@ -1,7 +1,7 @@
 import { ApplicationProvider } from "./context";
 import HomePage from "./pages/HomePage/HomePage";
 
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import AllReports from "./pages/AllReports/AllReports";
 import Wizard from "./pages/Wizard/Wizard";
 import "./app.css";
@@ -12,6 +12,7 @@ import { candidates, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
 	const [allCandidates, setAllCandidates] = useState([]);
@@ -19,22 +20,22 @@ function App() {
 	const [token, setToken] = useState(
 		localStorage.getItem("token") ? localStorage.getItem("token") : ""
 	);
-	const [modalInfo, setModalInfo] = useState({});
-
-	const [modalIsOpen, setModalIsOpen] = useState(false);
-
 
 	const [isAdmin, setIsAdmin] = useState(false);
+	const [isLogged, setIsLogged] = useState(false);
 
-	
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [modalInfo, setModalInfo] = useState({});
+
 	useEffect(() => {
 		setAllCandidates(candidates);
 		setAllReports(reports);
 	}, []);
 
 	useEffect(() => {
+		setIsLogged(!!token);
 		const parsedData = token && parseJwt(token);
-		setIsAdmin(parsedData.email === "admin@admin.com");
+		setIsAdmin(parsedData?.email === "admin@admin.com");
 	}, [token]);
 
 	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
@@ -51,8 +52,9 @@ function App() {
 					token,
 					setToken,
 
-		  modalInfo, setModalInfo,
 
+					modalInfo,
+					setModalInfo,
 
 					setModalIsOpen,
 					modalIsOpen,
@@ -60,7 +62,6 @@ function App() {
 					isAdmin,
 
 					apiUrl,
-
 				}}
 			>
 				<Switch>
@@ -68,24 +69,34 @@ function App() {
 						<LoginPage />
 					</Route>
 
-					<Route exact path="/home">
-						<HomePage />
-					</Route>
-
-					<Route exact path="/reports">
-						<AllReports />
-					</Route>
-
-					<Route exact path="/wizard">
-						<Wizard />
-					</Route>
+					<Route
+						exact
+						path="/home"
+						render={() =>
+							token ? <HomePage /> : <Redirect to="/" />
+						}
+					/>
 
 					<Route
-						exact path="/details/:id"
-						render={(routerObject) => (
-							<DetailPage id={routerObject.match.params.id} />
-						)}
+						exact
+						path="/reports"
+						render={() =>
+							token ? <AllReports /> : <Redirect to="/" />
+						}
 					/>
+
+					{/* Higher order components */}
+					<ProtectedRoute exact path="/wizard" component={Wizard} />
+
+					{token && (
+						<Route
+							exact
+							path="/details/:id"
+							render={(routerObject) => (
+								<DetailPage id={routerObject.match.params.id} />
+							)}
+						/>
+					)}
 
 					<Route path="*">
 						<ErrorPage />
@@ -94,6 +105,7 @@ function App() {
 			</ApplicationProvider>
 		</>
 	);
+
 }
 
 export default App;

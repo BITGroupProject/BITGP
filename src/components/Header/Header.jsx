@@ -16,7 +16,7 @@ const Header = () => {
 
 
     return (
-        <header>
+        <header class="main-header">
             <span>Blazing fast</span>
             <div className="middle-buttons">
                 <Link to="/home">Candidates</Link>

@@ -3,7 +3,8 @@ import Card from "../../components/Card/Card";
 import "./allReports.css";
 
 import Footer from "../../components/Footer/Footer";
-import AdminHeader from "../../components/AdminHeader/AdminHeader";
+// import AdminHeader from "../../components/AdminHeader/AdminHeader";
+import Header from "../../components/Header/Header";
 import { applicationContext } from "./../../context";
 import Modal from "../../components/Modal/Modal";
 import Search from "../../components/Search/Search";
@@ -26,7 +27,7 @@ const AllReports = () => {
   return (
     <>
       <Modal />
-      <AdminHeader button1="button1" button2="button2" />
+      <Header button1="button1" button2="button2" />
 
       <div className="allReports">
         <Search setInputValue={setInputValue} inputValue={inputValue} />
