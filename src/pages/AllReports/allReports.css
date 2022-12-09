@@ -18,11 +18,11 @@
   color: transparent;
 }
 
-
 .allReports {
   display: flex;
   flex-direction: column;
   padding: 120px;
+  background-color: thistle;
 }
 
 .singleReport {
@@ -66,5 +66,3 @@
   margin-left: 13px;
   width: 20%;
 }
-
-
