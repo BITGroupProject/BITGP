@@ -14,87 +14,84 @@ import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
-	const [allCandidates, setAllCandidates] = useState([]);
-	const [allReports, setAllReports] = useState([]);
-	const [token, setToken] = useState(
-		localStorage.getItem("token") ? localStorage.getItem("token") : ""
-	);
-	const [modalInfo, setModalInfo] = useState({});
+  const [allCandidates, setAllCandidates] = useState([]);
+  const [allReports, setAllReports] = useState([]);
+  const [token, setToken] = useState(
+    localStorage.getItem("token") ? localStorage.getItem("token") : ""
+  );
+  const [modalInfo, setModalInfo] = useState({});
 
-	const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const [isAdmin, setIsAdmin] = useState(false);
 
-	const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    setAllCandidates(candidates);
+    setAllReports(reports);
+  }, []);
 
-	
-	useEffect(() => {
-		setAllCandidates(candidates);
-		setAllReports(reports);
-	}, []);
+  useEffect(() => {
+    const parsedData = token && parseJwt(token);
+    setIsAdmin(parsedData.email === "admin@admin.com");
+  }, [token]);
 
-	useEffect(() => {
-		const parsedData = token && parseJwt(token);
-		setIsAdmin(parsedData.email === "admin@admin.com");
-	}, [token]);
+  const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
 
-	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
+  return (
+    <>
+      <ApplicationProvider
+        value={{
+          allCandidates,
 
-	return (
-		<>
-			<ApplicationProvider
-				value={{
-					allCandidates,
+          allReports,
+          setAllReports,
 
-					allReports,
-					setAllReports,
+          token,
+          setToken,
 
-					token,
-					setToken,
+          modalInfo,
+          setModalInfo,
 
-		  modalInfo, setModalInfo
+          setModalIsOpen,
+          modalIsOpen,
 
+          isAdmin,
 
-					setModalIsOpen,
-					modalIsOpen,
+          apiUrl,
+        }}
+      >
+        <Switch>
+          <Route exact path="/">
+            <LoginPage />
+          </Route>
 
-					isAdmin,
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
 
-					apiUrl,
+          <Route exact path="/reports">
+            <AllReports />
+          </Route>
 
-				}}
-			>
-				<Switch>
-					<Route exact path="/">
-						<LoginPage />
-					</Route>
+          <Route exact path="/wizard">
+            <Wizard />
+          </Route>
 
-					<Route exact path="/home">
-						<HomePage />
-					</Route>
+          <Route
+            exact
+            path="/details/:id"
+            render={(routerObject) => (
+              <DetailPage id={routerObject.match.params.id} />
+            )}
+          />
 
-					<Route exact path="/reports">
-						<AllReports />
-					</Route>
-
-					<Route exact path="/wizard">
-						<Wizard />
-					</Route>
-
-					<Route
-						exact
-						path="/details/:id"
-						render={(routerObject) => (
-							<DetailPage id={routerObject.match.params.id} />
-						)}
-					/>
-
-					<Route path="*">
-						<ErrorPage />
-					</Route>
-				</Switch>
-			</ApplicationProvider>
-		</>
-	);
+          <Route path="*">
+            <ErrorPage />
+          </Route>
+        </Switch>
+      </ApplicationProvider>
+    </>
+  );
 }
 
 export default App;
