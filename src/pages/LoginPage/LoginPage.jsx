@@ -4,6 +4,7 @@ import BackgroundAnimation from "../../components/BackgroundAnimation/Background
 import { applicationContext } from "../../context";
 
 import "./loginPage.css";
+
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");

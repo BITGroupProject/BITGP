@@ -6,6 +6,7 @@ import { formattedDate } from "../../utils/utils";
 const Modal = () => {
   const { modalIsOpen, setModalIsOpen, modalInfo, setModalInfo } =
     useContext(applicationContext);
+    console.log(modalInfo);
 
   const date =
     modalInfo?.interviewDate && formattedDate(modalInfo?.interviewDate, ".");
@@ -23,7 +24,6 @@ const Modal = () => {
             X
           </button>
 
-          {/* {modalInfo?.companyName} */}
           <h2>{modalInfo?.candidateName}</h2>
           <div className="info-modal">
             <div className="info-left">
