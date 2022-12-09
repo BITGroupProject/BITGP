@@ -8,104 +8,101 @@ import "./app.css";
 
 import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
-import { candidates, reports } from "./data";
+import { candidates, companies, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
-	const [allCandidates, setAllCandidates] = useState([]);
-	const [allReports, setAllReports] = useState([]);
-	const [token, setToken] = useState(
-		localStorage.getItem("token") ? localStorage.getItem("token") : ""
-	);
+  const [allCandidates, setAllCandidates] = useState([]);
+  const [allCompanies, setAllCompanies] = useState([]);
+  const [allReports, setAllReports] = useState([]);
+  const [token, setToken] = useState(
+    localStorage.getItem("token") ? localStorage.getItem("token") : ""
+  );
 
-	const [isAdmin, setIsAdmin] = useState(false);
-	const [isLogged, setIsLogged] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
-	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const [modalInfo, setModalInfo] = useState({});
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalInfo, setModalInfo] = useState({});
 
-	useEffect(() => {
-		setAllCandidates(candidates);
-		setAllReports(reports);
-	}, []);
+  useEffect(() => {
+    setAllCandidates(candidates);
+    setAllCompanies(companies);
+    setAllReports(reports);
+  }, []);
 
-	useEffect(() => {
-		setIsLogged(!!token);
-		const parsedData = token && parseJwt(token);
-		setIsAdmin(parsedData?.email === "admin@admin.com");
-	}, [token]);
+  useEffect(() => {
+    setIsLogged(!!token);
+    const parsedData = token && parseJwt(token);
+    setIsAdmin(parsedData?.email === "admin@admin.com");
+  }, [token]);
 
-	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
+  const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
 
-	return (
-		<>
-			<ApplicationProvider
-				value={{
-					allCandidates,
+  return (
+    <>
+      <ApplicationProvider
+        value={{
+          allCandidates,
+          allCompanies,
 
-					allReports,
-					setAllReports,
+          allReports,
+          setAllReports,
 
-					token,
-					setToken,
+          token,
+          setToken,
 
+          modalInfo,
+          setModalInfo,
 
-					modalInfo,
-					setModalInfo,
+          setModalIsOpen,
+          modalIsOpen,
 
-					setModalIsOpen,
-					modalIsOpen,
+          isAdmin,
 
-					isAdmin,
+          apiUrl,
+        }}
+      >
+        <Switch>
+          <Route exact path="/">
+            <LoginPage />
+          </Route>
 
-					apiUrl,
-				}}
-			>
-				<Switch>
-					<Route exact path="/">
-						<LoginPage />
-					</Route>
+          <Route
+            exact
+            path="/home"
+            render={() => (token ? <HomePage /> : <Redirect to="/" />)}
+          />
 
-					<Route
-						exact
-						path="/home"
-						render={() =>
-							token ? <HomePage /> : <Redirect to="/" />
-						}
-					/>
+          <Route
+            exact
+            path="/reports"
+            render={() => (token ? <AllReports /> : <Redirect to="/" />)}
+          />
 
-					<Route
-						exact
-						path="/reports"
-						render={() =>
-							token ? <AllReports /> : <Redirect to="/" />
-						}
-					/>
+          {/* Higher order components */}
+          <ProtectedRoute exact path="/wizard" component={Wizard} />
 
-					{/* Higher order components */}
-					<ProtectedRoute exact path="/wizard" component={Wizard} />
+          {token && (
+            <Route
+              exact
+              path="/details/:id"
+              render={(routerObject) => (
+                <DetailPage id={routerObject.match.params.id} />
+              )}
+            />
+          )}
 
-					{token && (
-						<Route
-							exact
-							path="/details/:id"
-							render={(routerObject) => (
-								<DetailPage id={routerObject.match.params.id} />
-							)}
-						/>
-					)}
-
-					<Route path="*">
-						<ErrorPage />
-					</Route>
-				</Switch>
-			</ApplicationProvider>
-		</>
-	);
-
+          <Route path="*">
+            <ErrorPage />
+          </Route>
+        </Switch>
+      </ApplicationProvider>
+    </>
+  );
 }
 
 export default App;
