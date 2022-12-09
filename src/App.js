@@ -81,8 +81,7 @@ function App() {
 					</Route>
 
 					<Route
-						exact
-						path="/details/:id"
+						exact path="/details/:id"
 						render={(routerObject) => (
 							<DetailPage id={routerObject.match.params.id} />
 						)}

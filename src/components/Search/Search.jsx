@@ -10,7 +10,7 @@ const Search = ({ inputValue, setInputValue }) => {
             type="search"
             id="search"
             placeholder="Search..."
-            autocomplete="off"
+            autoComplete="off"
             onChange={(event) => setInputValue(event.target.value)}
             value={inputValue}
         />
