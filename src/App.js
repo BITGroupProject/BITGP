@@ -51,7 +51,7 @@ function App() {
 					token,
 					setToken,
 
-		  modalInfo, setModalInfo
+		  modalInfo, setModalInfo,
 
 
 					setModalIsOpen,
