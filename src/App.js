@@ -20,10 +20,12 @@ function App() {
 	const [token, setToken] = useState(
 		localStorage.getItem("token") ? localStorage.getItem("token") : ""
 	);
+
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [isLogged, setIsLogged] = useState(false);
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [modalInfo, setModalInfo] = useState({});
 
 	useEffect(() => {
 		setAllCandidates(candidates);
@@ -49,6 +51,9 @@ function App() {
 
 					token,
 					setToken,
+
+					modalInfo,
+					setModalInfo,
 
 					setModalIsOpen,
 					modalIsOpen,
