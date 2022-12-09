@@ -8,19 +8,18 @@ import Header from "../../components/Header/Header";
 import { applicationContext } from "./../../context";
 import Modal from "../../components/Modal/Modal";
 import Search from "../../components/Search/Search";
-import SearchError from "./../../components/SearchError/SearchError"
+import SearchError from "./../../components/SearchError/SearchError";
 
 const AllReports = () => {
-  // const [allReports, setAllReports] = useState(reports);
   const [inputValue, setInputValue] = useState("");
   const { allReports } = useContext(applicationContext);
 
   const searchReports = allReports.filter((e) => {
-    const companyName = e.companyName.toLowerCase();
-    const candidateName = e.candidateName.toLowerCase();
+    const companyName = e.companyName?.toLowerCase();
+    const candidateName = e.candidateName?.toLowerCase();
     return (
-      companyName.includes(inputValue.toLowerCase()) ||
-      candidateName.includes(inputValue.toLowerCase())
+      companyName?.includes(inputValue.toLowerCase()) ||
+      candidateName?.includes(inputValue.toLowerCase())
     );
   });
 
@@ -37,7 +36,7 @@ const AllReports = () => {
 
         {inputValue &&
           searchReports.map((e) => <Card info={e} key={e.id} isList={true} />)}
-        {inputValue && !searchReports?.length && <SearchError/>}
+        {inputValue && !searchReports?.length && <SearchError />}
       </div>
 
       <Footer />

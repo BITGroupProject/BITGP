@@ -27,10 +27,6 @@ function App() {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [modalInfo, setModalInfo] = useState({});
 
-	useEffect(() => {
-		setAllCandidates(candidates);
-		setAllReports(reports);
-	}, []);
 
 	useEffect(() => {
 		setIsLogged(!!token);
@@ -39,6 +35,17 @@ function App() {
 	}, [token]);
 
 	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
+
+	useEffect(() => {
+	fetch(apiUrl + "/reports",{
+		headers:{
+			"Authorization": "Bearer " + token
+		}
+	})
+	.then((res) => res.json())
+	.then((data) => setAllReports(data))
+	.catch(error => console.log(error))
+	},[token]);
 
 	return (
 		<>
