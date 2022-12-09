@@ -8,7 +8,6 @@ import "./app.css";
 
 import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
-import { candidates, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
@@ -26,7 +25,6 @@ function App() {
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [modalInfo, setModalInfo] = useState({});
-
 
 	useEffect(() => {
 		setIsLogged(!!token);
@@ -46,6 +44,18 @@ function App() {
 	.then((data) => setAllReports(data))
 	.catch(error => console.log(error))
 	},[token]);
+  
+  useEffect(() => {
+		fetch(apiUrl + "/candidates", {
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": "Bearer " + token
+			}
+		})
+			.then(res => res.json())
+			.then(res => setAllCandidates(res))
+			.catch(error => console.log(error))
+	}, [token])
 
 	return (
 		<>
