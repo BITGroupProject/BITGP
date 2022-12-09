@@ -21,8 +21,8 @@ const DetailPage = ({ id }) => {
 
   return (
     <>
-      <Header></Header>
       <BackgroundAnimation />
+      <Header></Header>
       <section id="detailPage">
         <div className="profile bg-glass">
           <figure className="profile-image">

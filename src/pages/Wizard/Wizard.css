@@ -1,6 +1,7 @@
 .wizard-container {
   display: flex;
   padding: 2rem 10%;
+  background-color: thistle;
 }
 
 .progress--side-bar {

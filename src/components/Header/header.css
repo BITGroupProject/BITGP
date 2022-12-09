@@ -1,7 +1,7 @@
 .main-header {
   background-color: rgb(131, 84, 200);
   border-bottom: 1px solid rgb(28, 30, 68);
-  padding: 15px 30px;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   /* too dark to be legible */
@@ -18,15 +18,19 @@
 header > a {
   text-decoration: none;
   /* color:rgb(220,125,164); */
-  border: 1px solid rgb(220, 125, 164);
+  border: 1px solid rgb(236, 207, 225);
   padding: inherit;
   border-radius: 3px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
 }
 
 .middle-buttons > a {
   text-decoration: none;
   /* color: rgb(220,125,164); */
-  border: 1px solid rgb(220, 125, 164);
+  border: 1px solid rgb(236, 207, 225);
+  /* too dark to be legible */
   padding: 10px 30px;
   border-radius: 3px;
   margin: 10px;
