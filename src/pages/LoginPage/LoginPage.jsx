@@ -8,6 +8,7 @@ const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const { setToken } = useContext(applicationContext);
 
@@ -16,11 +17,14 @@ const LoginPage = () => {
 	const updateToken = (token) => {
 		setToken(token);
 		localStorage.setItem("token", token);
-		history.push("/home");
+
+		setTimeout(() => {
+			history.push("/home");
+		}, 100);
 	};
 
 	const validateEmail = (email) => {
-		var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		var mailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 		if (email.match(mailFormat)) return true;
 
@@ -28,29 +32,37 @@ const LoginPage = () => {
 	};
 
 	const login = () => {
+		setIsSubmitted(true);
+
 		// validate data
 		if (!validateEmail(email))
 			return setErrorMessage("Wrong email address format!");
 		if (!password) return setErrorMessage("Please enter password");
 
-		// our data that we send to backend
-		const data = {
-			email,
-			password,
-		};
-
 		fetch("https://node-api-krmk.onrender.com/login", {
 			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(data),
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				email,
+				password,
+			}),
 		})
-			.then((res) => res.json())
+			.then((response) => {
+				if (response.ok) return response.json();
+				return Promise.reject("Wrong credentials!");
+			})
+
 			// if response is good do this
 			.then((data) => updateToken(data.accessToken))
+
 			// if response is not good do this
-			.catch((error) => console.error(error));
+			.catch((error) => setErrorMessage(error))
+
+			.finally((data) =>
+				setTimeout(() => {
+					setIsSubmitted(false);
+				}, 500)
+			);
 	};
 
 	return (
@@ -64,6 +76,7 @@ const LoginPage = () => {
 							Email
 							<input
 								type="email"
+								placeholder="example"
 								value={email}
 								onChange={(event) =>
 									setEmail(event.target.value)
@@ -91,7 +104,11 @@ const LoginPage = () => {
 						{errorMessage}
 					</div>
 					<div>
-						<button onClick={login}>Sign in</button>
+						{isSubmitted ? (
+							<button disabled>Sign in</button>
+						) : (
+							<button onClick={login}>Sign in</button>
+						)}
 					</div>
 				</div>
 			</div>
