@@ -9,20 +9,28 @@ import X from "./X.png";
 
 const Card = ({ info, isList }) => {
   const date = info?.interviewDate && formattedDate(info?.interviewDate, ".");
-  const { setModalIsOpen, setModalInfo, token, apiUrl } =
-    useContext(applicationContext);
+  const {
+    setModalIsOpen,
+    setModalInfo,
+    token,
+    apiUrl,
+    setAllReports,
+    setRerender,
+  } = useContext(applicationContext);
 
   const deleteReport = () => {
-    fetch(apiUrl + "/reports/" + info.id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+    setTimeout(() => {
+      fetch(apiUrl + "/reports/" + info.id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => setRerender(new Date().getTime())) // random vrednost, da bi mogao dependency da menja
+        .catch((error) => console.log(error));
+    }, 5000);
   };
 
   return (

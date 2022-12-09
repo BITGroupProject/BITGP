@@ -18,6 +18,7 @@ function App() {
   const [allCandidates, setAllCandidates] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
   const [allReports, setAllReports] = useState([]);
+  const [rerender, setRerender] = useState("")
   const [token, setToken] = useState(
     localStorage.getItem("token") ? localStorage.getItem("token") : ""
   );
@@ -43,15 +44,21 @@ function App() {
   const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
 
   useEffect(() => {
-    fetch(apiUrl + "/reports", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setAllReports(data))
-      .catch((error) => console.log(error));
-  }, [token]);
+    setTimeout(() => {
+      console.log(apiUrl+ "/reports")
+      console.log(token)
+      fetch(apiUrl + "/reports", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => setAllReports(data))
+        .catch((error) => console.log(error));
+    }, 5000);
+  
+      
+  }, [token, rerender]);
 
   useEffect(() => {
     fetch(apiUrl + "/candidates", {
@@ -87,6 +94,8 @@ function App() {
           isAdmin,
 
           apiUrl,
+
+          setRerender
         }}
       >
         <Switch>
