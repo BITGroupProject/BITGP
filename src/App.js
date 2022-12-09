@@ -104,6 +104,7 @@ function App() {
 			</ApplicationProvider>
 		</>
 	);
+
 }
 
 export default App;

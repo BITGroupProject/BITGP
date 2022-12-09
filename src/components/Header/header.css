@@ -1,37 +1,37 @@
-header {
-    background-color: rgb(131,84,200);
-    border-bottom: 1px solid rgb(28, 30, 68);
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    color: rgb(213,110,174);
+.main-header {
+  background-color: rgb(131, 84, 200);
+  border-bottom: 1px solid rgb(28, 30, 68);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  /* too dark to be legible */
+  /* color: rgb(213, 110, 174);  */
+  color: rgb(236, 207, 225);
 }
 
-header > span {
-    font-size: 22px;
-    font-weight: 600;
-    padding-top: 10px;
-    
+.main-header > span {
+  font-size: 22px;
+  font-weight: 600;
+  padding-top: 10px;
 }
 
 header > a {
-    text-decoration: none;
-    /* color:rgb(220,125,164); */
-    border: 1px solid rgb(220,125,164);
-    padding: inherit;
-    border-radius: 3px;
+  text-decoration: none;
+  /* color:rgb(220,125,164); */
+  border: 1px solid rgb(220, 125, 164);
+  padding: inherit;
+  border-radius: 3px;
 }
 
 .middle-buttons > a {
-    text-decoration: none;
-    /* color: rgb(220,125,164); */
-    border: 1px solid rgb(220,125,164);
-    padding: 10px 30px;
-    border-radius: 3px;
-    margin: 10px;
+  text-decoration: none;
+  /* color: rgb(220,125,164); */
+  border: 1px solid rgb(220, 125, 164);
+  padding: 10px 30px;
+  border-radius: 3px;
+  margin: 10px;
 }
 
 .middle-buttons {
-    padding: 15px 30px;
+  padding: 15px 30px;
 }
-
