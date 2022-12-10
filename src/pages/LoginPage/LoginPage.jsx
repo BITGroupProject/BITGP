@@ -36,9 +36,15 @@ const LoginPage = () => {
 		setIsSubmitted(true);
 
 		// validate data
-		if (!validateEmail(email))
+		if (!validateEmail(email)) {
+			setIsSubmitted(false);
 			return setErrorMessage("Wrong email address format!");
-		if (!password) return setErrorMessage("Please enter password");
+		}
+
+		if (!password) {
+			setIsSubmitted(false);
+			return setErrorMessage("Please enter password");
+		}
 
 		fetch("https://node-api-krmk.onrender.com/login", {
 			method: "POST",
@@ -77,7 +83,6 @@ const LoginPage = () => {
 							Email
 							<input
 								type="email"
-								placeholder="example"
 								value={email}
 								onChange={(event) =>
 									setEmail(event.target.value)
