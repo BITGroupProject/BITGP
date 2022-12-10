@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import Button from "../Button/Button";
 import CompanyItem from "../CompanyItem/CompanyItem";
-import { candidates } from "../../data";
 import "./Company.css";
 
 import Search from "../../components/Search/Search";
@@ -10,9 +9,9 @@ import { applicationContext } from "../../context";
 
 function Company(props) {
   const [inputValue, setInputValue] = useState("");
-  const { allCandidates } = useContext(applicationContext);
+  const { allCompanies } = useContext(applicationContext);
 
-  const searchCandidate = allCandidates.filter((e) => {
+  const searchCandidate = allCompanies.filter((e) => {
     const candidateName = e.name.toLowerCase();
 
     return candidateName.includes(inputValue.toLowerCase());
@@ -36,7 +35,7 @@ function Company(props) {
             ></CompanyItem>
           ))}
         {!inputValue &&
-          allCandidates.map((el, i) => (
+          allCompanies.map((el, i) => (
             <CompanyItem
               data={el}
               key={`company-` + i}
