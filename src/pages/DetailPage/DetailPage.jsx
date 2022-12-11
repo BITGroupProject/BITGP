@@ -8,7 +8,8 @@ import "./detailPage.css";
 
 const DetailPage = ({ id }) => {
   const [candidate, setCandidate] = useState({});
-
+  // Lets get id for single candidate with useParams and than fetch this single candidate from API
+  // Imagine large api and single candidate endpoint returns more data than endpoint for list of candidates
   const { allCandidates } = useContext(applicationContext);
 
   const findCandidate = () => {

@@ -28,6 +28,7 @@ const Homepage = () => {
 		<>
 			<>
 				<div className="homePage">
+					{/* I can move this Header and Footer one section up if I'm using them on the whole app except Login */}
 					<Header />
 					<main>
 						<BackgroundAnimation />

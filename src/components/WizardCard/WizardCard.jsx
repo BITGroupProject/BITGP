@@ -3,6 +3,8 @@ import "./WizardCard.css";
 
 function WizardCard(props) {
   const select = function () {
+    // Lets create only one state  props.setActiveItem(selectedItem); and get the all data from that object
+    // I'm using more generic name because you are using card for both candidate and company
     props.setActiveCandidate(props.id);
     props.setCandidateId(props.data.id);
     props.setCandidateName(props.data.name);

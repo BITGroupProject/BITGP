@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import { Redirect, Route, Switch } from "react-router-dom";
 import AllReports from "./pages/AllReports/AllReports";
 import Wizard from "./pages/Wizard/Wizard";
-import "./app.css";
+import "./App.css";
 
 import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
