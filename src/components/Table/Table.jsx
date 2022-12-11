@@ -24,6 +24,8 @@ const Table = ({ id }) => {
 	return (
 		<>
 			<table id="candidateReports">
+
+				{/* Lets clean up and remove all commented code  :) */}
 				{/* <thead>
 					<tr className="bg-glass">
 						<th>Company</th>
