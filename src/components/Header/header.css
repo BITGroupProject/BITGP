@@ -1,41 +1,34 @@
 .main-header {
-  background-color: rgb(131, 84, 200);
-  border-bottom: 1px solid rgb(28, 30, 68);
+  background-color: #fff;
   padding: 0.5rem 1rem;
   display: flex;
-  justify-content: space-between;
-  /* too dark to be legible */
-  /* color: rgb(213, 110, 174);  */
-  color: rgb(236, 207, 225);
+  align-items: center;
+  color: #000;
 }
 
 .main-header > span {
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 600;
-  padding-top: 10px;
+  font-style: italic;
 }
 
 header > a {
-  text-decoration: none;
-  /* color:rgb(220,125,164); */
-  border: 1px solid rgb(236, 207, 225);
+  border: 1px solid #000;
   padding: inherit;
   border-radius: 3px;
   vertical-align: middle;
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
-.middle-buttons > a {
-  text-decoration: none;
-  /* color: rgb(220,125,164); */
-  border: 1px solid rgb(236, 207, 225);
-  /* too dark to be legible */
-  padding: 10px 30px;
-  border-radius: 3px;
-  margin: 10px;
+header > nav {
+  margin-left: auto;
 }
 
-.middle-buttons {
-  padding: 15px 30px;
+header > nav > a {
+  margin: 0 10px;
+}
+header .active {
+  text-decoration: underline;
 }

@@ -1,14 +1,6 @@
 .allReports input {
-  background-image: url(./SearchIcon.svg);
-  background-repeat: no-repeat;
   width: 30%;
   margin-bottom: 30px;
-  height: 40px;
-  border-radius: 25px;
-  padding-left: 40px;
-  padding-right: 10px;
-  font-size: 20px;
-  -webkit-appearance: none;
 }
 
 .allReports input:focus {

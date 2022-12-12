@@ -8,7 +8,8 @@ import "./table.css";
 
 const Table = ({ id }) => {
 	const [reports, setReports] = useState([]);
-	const { allReports } = useContext(applicationContext);
+	const { allReports, setModalIsOpen, setModalInfo } =
+		useContext(applicationContext);
 
 	const findReports = () => {
 		const tmp = allReports.filter(
@@ -24,16 +25,6 @@ const Table = ({ id }) => {
 	return (
 		<>
 			<table id="candidateReports">
-
-				{/* Lets clean up and remove all commented code  :) */}
-				{/* <thead>
-					<tr className="bg-glass">
-						<th>Company</th>
-						<th>Interview date</th>
-						<th colSpan={2}>Status</th>
-					</tr>
-				</thead> */}
-
 				<tbody>
 					{reports.map((element) => (
 						<tr className="bg-glass" key={element?.id}>
@@ -60,6 +51,10 @@ const Table = ({ id }) => {
 									alt="Open modal"
 									width="30"
 									height="30"
+									onClick={() => {
+										setModalIsOpen(true);
+										setModalInfo(element);
+									}}
 								/>
 							</td>
 						</tr>
