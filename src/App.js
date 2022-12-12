@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import { Redirect, Route, Switch } from "react-router-dom";
 import AllReports from "./pages/AllReports/AllReports";
 import Wizard from "./pages/Wizard/Wizard";
-import "./App.css";
+import "./app.css";
 
 import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ function App() {
   const [allCandidates, setAllCandidates] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
   const [allReports, setAllReports] = useState([]);
-  const [rerender, setRerender] = useState("")
+  const [rerender, setRerender] = useState("");
   const [token, setToken] = useState(
     localStorage.getItem("token") ? localStorage.getItem("token") : ""
   );
@@ -45,8 +45,8 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(apiUrl+ "/reports")
-      console.log(token)
+      // console.log(apiUrl + "/reports");
+      // console.log(token);
       fetch(apiUrl + "/reports", {
         headers: {
           Authorization: "Bearer " + token,
@@ -56,8 +56,6 @@ function App() {
         .then((data) => setAllReports(data))
         .catch((error) => console.log(error));
     }, 5000);
-  
-      
   }, [token, rerender]);
 
   useEffect(() => {
@@ -95,7 +93,7 @@ function App() {
 
           apiUrl,
 
-          setRerender
+          setRerender,
         }}
       >
         <Switch>

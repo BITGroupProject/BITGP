@@ -6,12 +6,14 @@ function CompanyItem(props) {
   return (
     <div
       onClick={() => {
-        props.setActiveCompany(props.id);
-        props.setCompanyId(props.data.id);
-        props.setCompanyName(props.data.name);
+        props.setCompany({
+          activeCompany: props.id,
+          companyId: props.data.id,
+          companyName: props.data.name,
+        });
       }}
       className={
-        props.activeCompany == props.id
+        props.company.activeCompany == props.id
           ? `company-item company-item--selected`
           : `company-item`
       }
