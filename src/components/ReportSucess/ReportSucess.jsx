@@ -9,18 +9,15 @@ function ReportSucess(props) {
   useEffect(() => {
     let entry = {
       id: 10000000 + Math.round(Math.random() * 89999999),
-      candidateId: props.candidateId,
-      candidateName: props.candidateName,
-      companyId: props.companyId,
-      companyName: props.companyName,
+      candidateId: props.candidate.candidateId,
+      candidateName: props.candidate.candidateName,
+      companyId: props.company.companyId,
+      companyName: props.company.companyName,
       interviewDate: props.interviewDate,
       phase: props.phase,
       status: props.status,
       note: props.note,
     };
-
-    // console.log(token);
-    // console.log(entry);
 
     fetch("https://node-api-krmk.onrender.com/api/reports", {
       method: "POST",
@@ -37,7 +34,6 @@ function ReportSucess(props) {
       .catch((error) => {
         console.error("Error:", error);
       });
-    console.log(token);
   }, []);
 
   return (
