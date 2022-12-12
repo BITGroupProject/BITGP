@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import WizardCard from "../WizardCard/WizardCard";
 import Button from "../Button/Button";
-
 import Search from "../../components/Search/Search";
 import SearchError from "../../components/SearchError/SearchError";
 import { applicationContext } from "../../context";
@@ -30,10 +29,8 @@ function Candidate(props) {
               key={`candidate-` + i}
               id={i + 1}
               data={el}
-              activeCandidate={props.activeCandidate}
-              setActiveCandidate={props.setActiveCandidate}
-              setCandidateId={props.setCandidateId}
-              setCandidateName={props.setCandidateName}
+              candidate={props.candidate}
+              setCandidate={props.setCandidate}
             ></WizardCard>
           ))}
         {!inputValue &&
@@ -42,16 +39,14 @@ function Candidate(props) {
               key={`candidate-` + i}
               id={i + 1}
               data={el}
-              activeCandidate={props.activeCandidate}
-              setActiveCandidate={props.setActiveCandidate}
-              setCandidateId={props.setCandidateId}
-              setCandidateName={props.setCandidateName}
+              candidate={props.candidate}
+              setCandidate={props.setCandidate}
             ></WizardCard>
           ))}
         {inputValue && !searchCandidate?.length && <SearchError />}
       </section>
       <div className="candidate--next-prev">
-        <div className={props.activeCandidate ? `` : `btn-hidden`}>
+        <div className={props.candidate.activeCandidate ? `` : `btn-hidden`}>
           <Button do={props.next} name="Next"></Button>
         </div>
       </div>

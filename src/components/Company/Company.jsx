@@ -28,10 +28,8 @@ function Company(props) {
               data={el}
               key={`company-` + i}
               id={i + 1}
-              activeCompany={props.activeCompany}
-              setActiveCompany={props.setActiveCompany}
-              setCompanyId={props.setCompanyId}
-              setCompanyName={props.setCompanyName}
+              company={props.company}
+              setCompany={props.setCompany}
             ></CompanyItem>
           ))}
         {!inputValue &&
@@ -40,28 +38,16 @@ function Company(props) {
               data={el}
               key={`company-` + i}
               id={i + 1}
-              activeCompany={props.activeCompany}
-              setActiveCompany={props.setActiveCompany}
-              setCompanyId={props.setCompanyId}
-              setCompanyName={props.setCompanyName}
+              company={props.company}
+              setCompany={props.setCompany}
             ></CompanyItem>
           ))}
         {inputValue && !searchCandidate?.length && <SearchError />}
-
-        {/* <CompanyItem
-          data={el}
-          key={`company-` + i}
-          id={i + 1}
-          activeCompany={props.activeCompany}
-          setActiveCompany={props.setActiveCompany}
-          setCompanyId={props.setCompanyId}
-          setCompanyName={props.setCompanyName}
-        ></CompanyItem> */}
       </section>
       <div className="company--next-prev">
         <Button do={props.prev} name="Back"></Button>
 
-        <div className={props.activeCompany ? `` : `btn-hidden`}>
+        <div className={props.company.activeCompany ? `` : `btn-hidden`}>
           <Button do={props.next} name="Next"></Button>
         </div>
       </div>

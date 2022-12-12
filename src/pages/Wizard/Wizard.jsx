@@ -1,23 +1,18 @@
 import React, { useState } from "react";
-
-import BackgroundAnimation from "../../components/BackgroundAnimation/BackgroundAnimation";
+import Header from "../../components/Header/Header";
 import Candidate from "../../components/Candidate/Candidate";
 import Company from "../../components/Company/Company";
 import ReportDetails from "../../components/ReportDetails/ReportDetails";
 import ReportSuccess from "../../components/ReportSucess/ReportSucess";
+import ProgressSideBarNav from "../../components/ProgressSideBarNav/ProgressSideBarNav";
 import "./Wizard.css";
 
 function Wizard(props) {
 	const [step, setStep] = useState(1);
-	const [activeCandidate, setActiveCandidate] = useState();
-	const [activeCompany, setActiveCompany] = useState();
 
-	// Lets remove extra states and pass whole candidate, company object and in fetch method get only props that your sending
-	// (candidate.name, candidate.id ...)
-	const [candidateId, setCandidateId] = useState();
-	const [candidateName, setCandidateName] = useState();
-	const [companyId, setCompanyId] = useState();
-	const [companyName, setCompanyName] = useState();
+	const [candidate, setCandidate] = useState({});
+	const [company, setCompany] = useState({});
+
 	const [interviewDate, setInterviewDate] = useState();
 	const [phase, setPhase] = useState(`CV`);
 	const [status, setStatus] = useState(false);
@@ -37,15 +32,10 @@ function Wizard(props) {
 			output = (
 				<Candidate
 					next={stepNext}
-					// no need to pass props that are not used in this case
-					prev={stepPrev}
 					step={step}
-					activeCandidate={activeCandidate}
-					setActiveCandidate={setActiveCandidate}
-					setCandidateId={setCandidateId}
-					setCandidateName={setCandidateName}
-					// this can be self closing tag
-				></Candidate>
+					candidate={candidate}
+					setCandidate={setCandidate}
+				/>
 			);
 		} else if (step === 2) {
 			output = (
@@ -53,11 +43,9 @@ function Wizard(props) {
 					next={stepNext}
 					prev={stepPrev}
 					step={step}
-					activeCompany={activeCompany}
-					setActiveCompany={setActiveCompany}
-					setCompanyId={setCompanyId}
-					setCompanyName={setCompanyName}
-				></Company>
+					company={company}
+					setCompany={setCompany}
+				/>
 			);
 		} else if (step === 3) {
 			output = (
@@ -70,16 +58,13 @@ function Wizard(props) {
 					setPhase={setPhase}
 					setStatus={setStatus}
 					setNote={setNote}
-				></ReportDetails>
+				/>
 			);
 		} else if (step === 4) {
 			output = (
-				// Nice :) If you have time, maybe we can create redirection to reports list and highlight newly created report
 				<ReportSuccess
-					candidateId={candidateId}
-					candidateName={candidateName}
-					companyId={companyId}
-					companyName={companyName}
+					candidate={candidate}
+					company={company}
 					interviewDate={interviewDate}
 					phase={phase}
 					status={status}
@@ -93,49 +78,11 @@ function Wizard(props) {
 	return (
 		<>
 			<article className="wizard-container">
-				{/* We can create <ProgressSideBarNav step={step} /> component */}
-				<aside className="progress--side-bar">
-					<section className="progress--steps">
-						<div
-							className={step >= 1 ? `step step-active` : `step`}
-						>
-							<span className="step--number"> 1</span>{" "}
-							<span className="step--name">Select Candidate</span>
-						</div>{" "}
-						<div
-							className={step >= 2 ? `step step-active` : `step`}
-						>
-							<span className="step--number"> 2</span>{" "}
-							<span className="step--name">Select Company</span>
-						</div>{" "}
-						<div
-							className={step >= 3 ? `step step-active` : `step`}
-						>
-							<span className="step--number"> 3</span>{" "}
-							<span className="step--name">
-								Fill Report Detail
-							</span>
-						</div>
-					</section>
-					<section className="progress--completed">
-						<div className={candidateName ? `` : `step-hidden`}>
-							<div className="progress--detail-title">
-								Candidate
-							</div>
-							<div className="progress--detail">
-								{candidateName}
-							</div>
-						</div>{" "}
-						<div className={companyName ? `` : `step-hidden`}>
-							<div className="progress--detail-title">
-								Company
-							</div>
-							<div className="progress--detail">
-								{companyName}
-							</div>
-						</div>
-					</section>
-				</aside>
+				<ProgressSideBarNav
+					step={step}
+					candidate={candidate}
+					company={company}
+				/>
 				<main className="wizard--panel">{wizardStep(step)}</main>
 			</article>
 		</>
