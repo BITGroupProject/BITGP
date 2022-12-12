@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import BackgroundAnimation from "../../components/BackgroundAnimation/BackgroundAnimation";
 import { applicationContext } from "../../context";
+import { validateEmail } from "../../utils/utils";
 
 import "./loginPage.css";
 
@@ -15,23 +16,10 @@ const LoginPage = () => {
 
 	const history = useHistory();
 
-	const updateToken = (token) => {
-		setToken(token);
+	const updateToken = async (token) => {
+		await setToken(token);
 		localStorage.setItem("token", token);
-
-		setTimeout(() => {
-			history.push("/home");
-		}, 100);
-	};
-
-
-	// lets move this to some utils file, it can live in LoginPage folder as well
-	const validateEmail = (email) => {
-		var mailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-		if (email.match(mailFormat)) return true;
-
-		return false;
+		history.push("/home");
 	};
 
 	const login = () => {
@@ -48,7 +36,7 @@ const LoginPage = () => {
 			return setErrorMessage("Please enter password");
 		}
 
-		// Lets make api folder with generic api.js and separate by file for loginApi.js candidateApi.js like wrapper functions 
+		// Lets make api folder with generic api.js and separate by file for loginApi.js candidateApi.js like wrapper functions
 		// We can do this together on Monday
 
 		fetch("https://node-api-krmk.onrender.com/login", {
@@ -79,8 +67,8 @@ const LoginPage = () => {
 
 	return (
 		<>
-			<BackgroundAnimation />
 			<div id="loginPage">
+				<BackgroundAnimation />
 				<div className="login-wrapper bg-glass">
 					<h2>Sign in</h2>
 					<div className="">
@@ -116,14 +104,9 @@ const LoginPage = () => {
 						{errorMessage}
 					</div>
 					<div>
-						{/* I want this button to be disabled and once both fields are valid I want to enable it */}
-						{/* <button disabled={!isSubmitted} onClick={login}>Sign in</button> */}
-
-						{isSubmitted ? (
-							<button disabled>Sign in</button>
-						) : (
-							<button onClick={login}>Sign in</button>
-						)}
+						<button disabled={isSubmitted} onClick={login}>
+							Sign in
+						</button>
 					</div>
 				</div>
 			</div>

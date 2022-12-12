@@ -19,3 +19,11 @@ export const parseJwt = (token) => {
 
 	return JSON.parse(jsonPayload);
 };
+
+export const validateEmail = (email) => {
+	var mailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+	if (email.match(mailFormat)) return true;
+
+	return false;
+};
