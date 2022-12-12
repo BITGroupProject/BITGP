@@ -7,6 +7,11 @@ import { Link } from "react-router-dom";
 import eye from "./eye icon.png";
 import X from "./X.png";
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+
 const Card = ({ info, isList }) => {
 	const date = info?.interviewDate && formattedDate(info?.interviewDate, ".");
 	const { setModalIsOpen, setModalInfo, token, apiUrl, setRerender } =
@@ -25,6 +30,23 @@ const Card = ({ info, isList }) => {
 			.catch((error) => console.log(error));
 
 		setRerender(new Date().getTime()); // random vrednost, da bi mogao dependency da menja
+	};
+
+	const showSwal = () => {
+		MySwal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deleteReport();
+				Swal.fire("Deleted!", "Your file has been deleted.", "success");
+			}
+		});
 	};
 
 	return (
@@ -57,12 +79,7 @@ const Card = ({ info, isList }) => {
 							alt="eye"
 						/>
 
-						<img
-							className="X"
-							src={X}
-							onClick={deleteReport}
-							alt="X"
-						/>
+						<img className="X" src={X} onClick={showSwal} alt="X" />
 					</div>
 				</div>
 			) : (
