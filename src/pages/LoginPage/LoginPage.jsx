@@ -24,6 +24,8 @@ const LoginPage = () => {
 		}, 100);
 	};
 
+
+	// lets move this to some utils file, it can live in LoginPage folder as well
 	const validateEmail = (email) => {
 		var mailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -45,6 +47,9 @@ const LoginPage = () => {
 			setIsSubmitted(false);
 			return setErrorMessage("Please enter password");
 		}
+
+		// Lets make api folder with generic api.js and separate by file for loginApi.js candidateApi.js like wrapper functions 
+		// We can do this together on Monday
 
 		fetch("https://node-api-krmk.onrender.com/login", {
 			method: "POST",
@@ -85,6 +90,7 @@ const LoginPage = () => {
 								type="email"
 								value={email}
 								onChange={(event) =>
+									// lets validate this input fields on change event instead of click
 									setEmail(event.target.value)
 								}
 							/>
@@ -110,6 +116,9 @@ const LoginPage = () => {
 						{errorMessage}
 					</div>
 					<div>
+						{/* I want this button to be disabled and once both fields are valid I want to enable it */}
+						{/* <button disabled={!isSubmitted} onClick={login}>Sign in</button> */}
+
 						{isSubmitted ? (
 							<button disabled>Sign in</button>
 						) : (
