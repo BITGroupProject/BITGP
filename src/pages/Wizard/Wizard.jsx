@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-// import AdminHeader from "../../components/AdminHeader/AdminHeader";
 import Header from "../../components/Header/Header";
-import BackgroundAnimation from "../../components/BackgroundAnimation/BackgroundAnimation";
 import Candidate from "../../components/Candidate/Candidate";
 import Company from "../../components/Company/Company";
 import ReportDetails from "../../components/ReportDetails/ReportDetails";
@@ -90,8 +88,6 @@ function Wizard(props) {
   return (
     <>
       <Header></Header>
-      {/* <AdminHeader></AdminHeader> */}
-
       <article className="wizard-container">
         <aside className="progress--side-bar">
           <section className="progress--steps">
