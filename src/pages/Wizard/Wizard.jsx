@@ -10,6 +10,9 @@ function Wizard(props) {
   const [step, setStep] = useState(1);
   const [activeCandidate, setActiveCandidate] = useState();
   const [activeCompany, setActiveCompany] = useState();
+
+  // Lets remove extra states and pass whole candidate, company object and in fetch method get only props that your sending
+  // (candidate.name, candidate.id ...)
   const [candidateId, setCandidateId] = useState();
   const [candidateName, setCandidateName] = useState();
   const [companyId, setCompanyId] = useState();
@@ -33,12 +36,14 @@ function Wizard(props) {
       output = (
         <Candidate
           next={stepNext}
+          // no need to pass props that are not used in this case
           prev={stepPrev}
           step={step}
           activeCandidate={activeCandidate}
           setActiveCandidate={setActiveCandidate}
           setCandidateId={setCandidateId}
           setCandidateName={setCandidateName}
+          // this can be self closing tag
         ></Candidate>
       );
     } else if (step === 2) {
@@ -67,8 +72,8 @@ function Wizard(props) {
         ></ReportDetails>
       );
     } else if (step === 4) {
-      output = (
-        <>
+      output = ( 
+        // Nice :) If you have time, maybe we can create redirection to reports list and highlight newly created report 
           <ReportSuccess
             candidateId={candidateId}
             candidateName={candidateName}
@@ -78,8 +83,7 @@ function Wizard(props) {
             phase={phase}
             status={status}
             note={note}
-          ></ReportSuccess>
-        </>
+          />
       );
     }
     return output;
@@ -89,6 +93,7 @@ function Wizard(props) {
     <>
       <Header></Header>
       <article className="wizard-container">
+        {/* We can create <ProgressSideBarNav step={step} /> component */}
         <aside className="progress--side-bar">
           <section className="progress--steps">
             <div className={step >= 1 ? `step step-active` : `step`}>
