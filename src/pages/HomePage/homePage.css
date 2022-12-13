@@ -18,6 +18,16 @@
     color: #fff;
 }
 
+@media only screen and (max-width: 425px) {
+    .candidates-search {
+        font-size: 18px;
+        padding: 12px 0;
+    }
+    .card-wrapper {
+        padding: 10px 0;
+    }  
+}
+
 
 .bg-glass{
     background: rgba( 255, 255, 255, 0.3 );

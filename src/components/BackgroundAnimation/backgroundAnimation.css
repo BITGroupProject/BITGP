@@ -4,8 +4,8 @@
 
 
 .bg-glass{
-    background: rgba( 255, 255, 255, 0.3 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: rgba( 255, 255, 255, 0.3 ); 
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );  
     backdrop-filter: blur( 0px );
     -webkit-backdrop-filter: blur( 0px );
     border-radius: 10px;
@@ -24,6 +24,7 @@
     display: block;
     width: 50%;
     height: 100%;
+    background: rgb(196,215,242);
     background: rgba(255, 255, 255, 0.5);
     filter: blur(0px);
     transition: .4s;

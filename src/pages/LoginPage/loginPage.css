@@ -5,6 +5,7 @@
     min-height: 100vh;
     color: #fff;
 }
+
 #loginPage > .login-wrapper{
     display: flex;
     align-items: center;
