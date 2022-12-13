@@ -9,7 +9,7 @@
 
 .step--number {
   display: inline-block;
-  border: 0.1rem solid grey;
+  border: 0.1rem solid lightgrey;
   border-radius: 5rem;
   height: 2rem;
   width: 2rem;
@@ -17,11 +17,11 @@
   margin: 0.2rem;
   vertical-align: middle;
   text-align: center;
-  color: grey;
+  color: lightgrey;
 }
 
 .step--name {
-  color: grey;
+  color: lightgrey;
   margin-left: 0.1rem;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .progress--detail-title {
-  color: grey;
+  color: lightgrey;
   font-size: 70%;
   margin-top: 1rem;
   margin-bottom: 0.4rem;
