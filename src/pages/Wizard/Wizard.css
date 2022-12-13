@@ -13,3 +13,10 @@
 .step-hidden {
   display: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .wizard--panel {
+    border: none;
+    padding: 0;
+  }
+}

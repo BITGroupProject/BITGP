@@ -44,3 +44,9 @@
 .step-active > .step--number {
   border: 0.1rem solid black;
 }
+
+@media only screen and (max-width: 768px) {
+  .progress--side-bar {
+    display: none;
+  }
+}
