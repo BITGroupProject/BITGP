@@ -44,10 +44,11 @@ const LoginPage = () => {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
 				email,
-				password,
+				password, // ovde prosledjujemo email i password koji je ukucan
 			}),
 		})
 			.then((response) => {
+				console.log(response);
 				if (response.ok) return response.json();
 				return Promise.reject("Wrong credentials!");
 			})
