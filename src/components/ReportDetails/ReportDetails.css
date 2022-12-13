@@ -39,3 +39,28 @@ input {
   justify-content: space-between;
   margin: 2rem 0;
 }
+
+.report-input-warning {
+  color: red;
+}
+.report-input-warning-shadow {
+  box-shadow: 0 0 0.5rem 0.1rem red;
+}
+
+@media only screen and (max-width: 768px) {
+  .report-input-fields {
+    flex-direction: column;
+  }
+  .report-input-container {
+    width: 100%;
+  }
+  .report-input-container > input {
+    padding: 0.5rem;
+  }
+  .report-input-container > select {
+    padding: 0.5rem;
+  }
+  .report-textarea {
+    width: 105%;
+  }
+}

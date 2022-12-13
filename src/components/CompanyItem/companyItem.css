@@ -13,3 +13,10 @@
   background-color: dodgerblue;
   color: #fff;
 }
+
+@media only screen and (max-width: 768px) {
+  .company-item {
+    font-size: 110%;
+    padding: 0.8rem;
+  }
+}

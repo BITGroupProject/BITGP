@@ -12,8 +12,8 @@
   font-style: italic;
 }
 
-header > a {
-  border: 1px solid #000;
+.main-header > a {
+  border: 0.1rem solid darkslategrey;
   padding: inherit;
   border-radius: 3px;
   vertical-align: middle;
@@ -22,13 +22,39 @@ header > a {
   margin-left: 20px;
 }
 
-header > nav {
+.main-header > nav {
   margin-left: auto;
 }
 
-header > nav > a {
+.main-header > nav > a {
   margin: 0 10px;
 }
-header .active {
+.main-header .active {
   text-decoration: underline;
+  font-weight: 700;
+  cursor: default;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .main-header > span {
+    display: none;
+  }
+
+  .main-header > a {
+    padding: 0.2rem;
+    font-size: 80%;
+  }
+
+  .main-header > nav {
+    margin: 0;
+  }
+
+  .main-header > nav > a {
+    font-size: 75%;
+  }
 }

@@ -1,7 +1,13 @@
 .wizard-container {
   display: flex;
   padding: 2rem 10%;
-  background-color: thistle;
+  min-height: 90vh;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
 }
 
 .wizard--panel {
@@ -12,4 +18,15 @@
 
 .step-hidden {
   display: none;
+}
+
+main > div:last-child {
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .wizard--panel {
+    border: none;
+    padding: 0;
+  }
 }
