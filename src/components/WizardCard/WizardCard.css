@@ -3,7 +3,7 @@
   display: flex;
   background-color: #fff;
   align-items: center;
-  min-width: 45%;
+  width: 45%;
   height: 4rem;
   margin: 0.5rem;
   border: 0.1rem solid rgb(214, 226, 240);
@@ -28,7 +28,7 @@
 
 .wizard-card--email {
   color: darkslategray;
-  font-size: 75%;
+  font-size: 70%;
 }
 
 .wizard-card--selected {

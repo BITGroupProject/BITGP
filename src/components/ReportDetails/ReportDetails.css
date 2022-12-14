@@ -28,10 +28,14 @@ input {
   border: 0.1rem solid lightgrey;
   padding: 0.05rem;
   border-radius: 0.1rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .report-textarea {
   height: 5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .company--next-prev {
@@ -41,10 +45,10 @@ input {
 }
 
 .report-input-warning {
-  color: red;
+  color: darkred;
 }
 .report-input-warning-shadow {
-  box-shadow: 0 0 0.5rem 0.1rem red;
+  box-shadow: 0 0 0.5rem 0.1rem darkred;
 }
 
 @media only screen and (max-width: 768px) {
