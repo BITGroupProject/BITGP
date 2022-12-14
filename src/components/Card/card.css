@@ -24,11 +24,11 @@
 }
 
 .eye {
-  width: 10%;
+  width: 7%;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .eye > img {
