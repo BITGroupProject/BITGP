@@ -10,7 +10,7 @@ function ReportDetails(props) {
           <div className="report-input-container">
             <span
               className={
-                props.interviewDate &&
+                !props.interviewDate ||
                 Date.parse(props.interviewDate) < Date.parse(new Date())
                   ? `report-input-label`
                   : `report-input-warning report-input-label`
@@ -20,7 +20,7 @@ function ReportDetails(props) {
             </span>
             <input
               className={
-                props.interviewDate &&
+                !props.interviewDate ||
                 Date.parse(props.interviewDate) < Date.parse(new Date())
                   ? ``
                   : `report-input-warning report-input-warning-shadow`
@@ -33,13 +33,13 @@ function ReportDetails(props) {
             ></input>
             <span
               className={
-                props.interviewDate &&
+                !props.interviewDate ||
                 Date.parse(props.interviewDate) < Date.parse(new Date())
                   ? `btn-hidden `
                   : `report-input-label report-input-warning`
               }
             >
-              Date must be in the past.
+              Date cannot be in the future.
             </span>
           </div>{" "}
           <div className="report-input-container">
