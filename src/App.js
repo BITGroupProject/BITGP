@@ -1,147 +1,115 @@
 import { ApplicationProvider } from "./context";
-import HomePage from "./pages/HomePage/HomePage";
 
-import { Redirect, Route, Switch } from "react-router-dom";
-import AllReports from "./pages/AllReports/AllReports";
-import Wizard from "./pages/Wizard/Wizard";
+import { Route, Switch } from "react-router-dom";
+
 import "./app.css";
 
-import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
 import { candidates, companies, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import ProtectedPages from "./pages/ProtectedPages/ProtectedPages";
 
 function App() {
-  const [allCandidates, setAllCandidates] = useState([]);
-  const [allCompanies, setAllCompanies] = useState([]);
-  const [allReports, setAllReports] = useState([]);
-  const [rerender, setRerender] = useState("");
-  const [token, setToken] = useState(
-    localStorage.getItem("token") ? localStorage.getItem("token") : ""
-  );
+	const [allCandidates, setAllCandidates] = useState([]);
+	const [allCompanies, setAllCompanies] = useState([]);
+	const [allReports, setAllReports] = useState([]);
+	const [rerender, setRerender] = useState("");
+	const [token, setToken] = useState(
+		localStorage.getItem("token") ? localStorage.getItem("token") : ""
+	);
 
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
+	const [isAdmin, setIsAdmin] = useState(false);
+	const [isLogged, setIsLogged] = useState(false);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalInfo, setModalInfo] = useState({});
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [modalInfo, setModalInfo] = useState({});
 
-  useEffect(() => {
-    setAllCandidates(candidates);
-    setAllCompanies(companies);
-    setAllReports(reports);
-  }, []);
+	useEffect(() => {
+		setAllCandidates(candidates);
+		setAllCompanies(companies);
+		setAllReports(reports);
+	}, []);
 
-  useEffect(() => {
-    setIsLogged(!!token);
-    const parsedData = token && parseJwt(token);
-    setIsAdmin(parsedData?.email === "admin@admin.com");
-  }, [token]);
+	useEffect(() => {
+		setIsLogged(!!token);
+		const parsedData = token && parseJwt(token);
+		setIsAdmin(parsedData?.email === "admin@admin.com");
+	}, [token]);
 
-  const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
+	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
 
-  useEffect(() => {
-    if (token) {
-      setTimeout(() => {
-        fetch(apiUrl + "/reports", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => setAllReports(data))
-          .catch((error) => console.log(error));
-      }, 5000);
-    }
-  }, [token, rerender]);
+	useEffect(() => {
+		if (token) {
+			setTimeout(() => {
+				fetch(apiUrl + "/reports", {
+					headers: {
+						Authorization: "Bearer " + token,
+					},
+				})
+					.then((res) => res.json())
+					.then((data) => setAllReports(data))
+					.catch((error) => console.log(error));
+			}, 5000);
+		}
+	}, [token, rerender]);
 
-  useEffect(() => {
-    if (token) {
-      fetch(apiUrl + "/candidates", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => setAllCandidates(res))
-        .catch((error) => console.log(error));
-    }
-  }, [token]);
+	useEffect(() => {
+		if (token) {
+			fetch(apiUrl + "/candidates", {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + token,
+				},
+			})
+				.then((res) => res.json())
+				.then((res) => setAllCandidates(res))
+				.catch((error) => console.log(error));
+		}
+	}, [token]);
 
-  return (
-    <>
-      <ApplicationProvider
-        value={{
-          allCandidates,
-          allCompanies,
+	return (
+		<>
+			<ApplicationProvider
+				value={{
+					allCandidates,
+					allCompanies,
 
-          allReports,
-          setAllReports,
+					allReports,
+					setAllReports,
 
-          token,
-          setToken,
+					token,
+					setToken,
 
-          modalInfo,
-          setModalInfo,
+					modalInfo,
+					setModalInfo,
 
-          setModalIsOpen,
-          modalIsOpen,
+					setModalIsOpen,
+					modalIsOpen,
 
-          isAdmin,
+					isAdmin,
 
-          apiUrl,
+					apiUrl,
 
-          setRerender,
-        }}
-      >
-        {window.location.pathname !== "/" && <Header />}
+					setRerender,
+				}}
+			>
+				<Switch>
+					<Route exact path="/">
+						<LoginPage />
+					</Route>
 
-        <Switch>
-          <Route exact path="/">
-            <LoginPage />
-          </Route>
+					<ProtectedPages />
 
-          <Route
-            exact
-            path="/home"
-            render={() => (token ? <HomePage /> : <Redirect to="/" />)}
-          />
-
-          <Route
-            exact
-            path="/reports"
-            render={() => (token ? <AllReports /> : <Redirect to="/" />)}
-          />
-
-          {/* Higher order components */}
-          <ProtectedRoute exact path="/wizard" component={Wizard} />
-
-          {token && (
-            <Route
-              exact
-              path="/details/:id"
-              render={(routerObject) => (
-                <DetailPage id={routerObject.match.params.id} />
-              )}
-            />
-          )}
-
-          <Route path="*">
-            <ErrorPage />
-          </Route>
-        </Switch>
-
-        {window.location.pathname !== "/" && <Footer />}
-      </ApplicationProvider>
-    </>
-  );
+					<Route path="*">
+						<ErrorPage />
+					</Route>
+				</Switch>
+			</ApplicationProvider>
+		</>
+	);
 }
 
 export default App;

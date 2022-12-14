@@ -20,19 +20,19 @@ const Header = () => {
 			<nav>
 				<Link
 					to="/home"
-					className={location.pathname === "/home" && "active"}
+					className={location.pathname === "/home" ? "active" : ""}
 				>
 					Candidates
 				</Link>
 				<Link
 					to="/reports"
-					className={location.pathname === "/reports" && "active"}
+					className={location.pathname === "/reports" ? "active" : ""}
 				>
 					Reports
 				</Link>
 				<Link
 					to="/wizard"
-					className={location.pathname === "/wizard" && "active"}
+					className={location.pathname === "/wizard" ? "active" : ""}
 				>
 					Create report
 				</Link>

@@ -9,6 +9,12 @@ figure{
     line-height: 0;
 }
 
+main{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
 #loginPage, #detailPage, .homePage, #errorPage {
     background: rgb(50,49,77);
     background: linear-gradient(90deg, rgba(50,49,77,1) 0%, rgba(150,135,212,1) 60%, rgba(136,164,235,1) 98%);

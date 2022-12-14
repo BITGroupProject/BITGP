@@ -27,18 +27,17 @@ const AllReports = () => {
 
 			<div className="allReports">
 				<BackgroundAnimation />
-				<Search setInputValue={setInputValue} inputValue={inputValue} />
+				<main>
+					<Search
+						setInputValue={setInputValue}
+						inputValue={inputValue}
+					/>
 
-				{!inputValue &&
-					allReports.map((e) => (
+					{searchReports.map((e) => (
 						<Card info={e} key={e.id} isList={true} />
 					))}
-
-				{inputValue &&
-					searchReports.map((e) => (
-						<Card info={e} key={e.id} isList={true} />
-					))}
-				{inputValue && !searchReports?.length && <SearchError />}
+					{inputValue && !searchReports?.length && <SearchError />}
+				</main>
 			</div>
 		</>
 	);

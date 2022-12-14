@@ -78,8 +78,14 @@ const LoginPage = () => {
 							<input
 								type="email"
 								value={email}
+								onBlur={(event) => {
+									setErrorMessage(
+										validateEmail(event.target.value)
+											? ""
+											: "Wrong email address format!"
+									);
+								}}
 								onChange={(event) =>
-									// lets validate this input fields on change event instead of click
 									setEmail(event.target.value)
 								}
 							/>
