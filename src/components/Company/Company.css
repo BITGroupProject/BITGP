@@ -1,16 +1,17 @@
 .company-container {
   width: 100%;
   border: 0.05rem solid darkslategray;
-  height: 16rem;
-  overflow-y: scroll;
+  max-height: 16rem;
+  overflow-y: auto;
   background-color: #fff;
+  border-radius: 0.5rem;
 }
 
 .company--next-prev {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
-  margin-bottom: 0 !important;
+  margin-top: 2rem 0 0 0;
+  padding: 0 !important;
 }
 
 .company-search-container {
