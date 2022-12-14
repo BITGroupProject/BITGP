@@ -1,6 +1,6 @@
 .step--number {
   display: inline-block;
-  border: 0.1rem solid lightgrey;
+  border: 0.1rem solid #000;
   border-radius: 5rem;
   height: 2rem;
   width: 2rem;
@@ -8,30 +8,19 @@
   margin: 0.2rem;
   vertical-align: middle;
   text-align: center;
-  color: lightgrey;
+  color: #000;
 }
 
 .step--name {
-  color: lightgrey;
+  color: #000;
   margin-left: -0.2rem;
 }
 
-.progress--completed {
-  border-top: 0.1rem solid black;
-  padding: 1rem 0;
-}
-
-.progress--detail-title {
-  color: lightgrey;
-  font-size: 70%;
-  margin-top: 1rem;
-  margin-bottom: 0.4rem;
-}
-
 .step-active * {
-  color: black;
+  color: #fff;
 }
 
 .step-active > .step--number {
-  border: 0.1rem solid black;
+  border: 0.1rem solid #fff;
+  color: #fff;
 }
