@@ -1,6 +1,6 @@
 #detailPage {
   padding: 40px 100px;
-  color: #fff;
+  color: white;
 }
 
 #detailPage > .profile {
@@ -26,5 +26,3 @@
   word-break: break-all;
 }
 
-@media only screen and (max-width: 768px) {
-}

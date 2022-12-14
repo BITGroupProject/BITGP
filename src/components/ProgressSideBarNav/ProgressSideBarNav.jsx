@@ -1,22 +1,25 @@
 import React from "react";
+import ProgressStep from "../ProgressStep/ProgressStep";
 import "./progressSideBarNav.css";
 
 function ProgressSideBarNav(props) {
+	const stages = [
+		`Select Candidate`,
+		`Select Company`,
+		`Fill Report Details`,
+	];
 	return (
 		<aside className="progress--side-bar">
 			<section className="progress--steps">
-				<div className={props.step >= 1 ? `step step-active` : `step`}>
-					<span className="step--number"> 1</span>
-					<span className="step--name">Select Candidate</span>
-				</div>
-				<div className={props.step >= 2 ? `step step-active` : `step`}>
-					<span className="step--number"> 2</span>
-					<span className="step--name">Select Company</span>
-				</div>
-				<div className={props.step >= 3 ? `step step-active` : `step`}>
-					<span className="step--number"> 3</span>
-					<span className="step--name">Fill Report Detail</span>
-				</div>
+				{stages.map((el, i) => {
+					return (
+						<ProgressStep
+							stepName={el}
+							step={props.step}
+							stage={i + 1}
+						/>
+					);
+				})}
 			</section>
 			<section className="progress--completed">
 				<div
@@ -28,7 +31,7 @@ function ProgressSideBarNav(props) {
 					<div className="progress--detail">
 						{props.candidate.candidateName}
 					</div>
-				</div>
+				</div>{" "}
 				<div className={props.company.companyName ? `` : `step-hidden`}>
 					<div className="progress--detail-title">Company</div>
 					<div className="progress--detail">
