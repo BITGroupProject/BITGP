@@ -8,6 +8,7 @@
   margin: 0.5rem;
   border: 0.1rem solid rgb(214, 226, 240);
   cursor: pointer;
+  box-shadow: 0 0 1rem 0 rgba(31, 38, 135, 0.37);
 }
 
 .wizard-card:hover {
