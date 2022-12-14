@@ -32,22 +32,13 @@ const Homepage = () => {
 						/>
 					</div>
 					<div className="card-wrapper">
-						{inputValue &&
-							searchCandidate.map((element, index) => (
-								<Card
-									info={element}
-									isList={false}
-									key={"search-card-" + index}
-								/>
-							))}
-						{!inputValue &&
-							allCandidates.map((element, index) => (
-								<Card
-									info={element}
-									isList={false}
-									key={"card-" + index}
-								/>
-							))}
+						{searchCandidate.map((element, index) => (
+							<Card
+								info={element}
+								isList={false}
+								key={"search-card-" + index}
+							/>
+						))}
 						{inputValue && !searchCandidate?.length && (
 							<SearchError />
 						)}
