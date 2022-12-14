@@ -18,14 +18,27 @@
   color: #fff;
 }
 
-.bg-glass {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  border-radius: 10px;
-  border: 1px solid #fff;
-  backdrop-filter: blur(2px);
-  overflow: hidden;
-  position: relative;
+@media only screen and (max-width: 425px) {
+    .candidates-search {
+        font-size: 18px;
+        padding: 12px 0;
+    }
+    .card-wrapper {
+        padding: 10px 0;
+    }  
 }
+
+.bg-glass{
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+    border-radius: 10px;
+    border: 1px solid #fff;
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+    position: relative;
+}
+
+
+

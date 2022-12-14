@@ -84,7 +84,7 @@ const Card = ({ info, isList }) => {
 					</div>
 				</div>
 			) : (
-				<Link to={`/details/${info.id}`} className="card bg-">
+				<Link to={`/details/${info.id}`} className="card bg-glass">
 					<img
 						src="https://commentpara.de/img/anonymous.svg"
 						alt="candidate"

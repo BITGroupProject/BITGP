@@ -1,6 +1,6 @@
 .main-header {
   background-color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   color: #000;
@@ -29,32 +29,38 @@
 .main-header > nav > a {
   margin: 0 10px;
 }
+
+header .active {
+  text-decoration: underline;
+}
+
 .main-header .active {
   text-decoration: underline;
   font-weight: 700;
   cursor: default;
 }
 
-@media only screen and (max-width: 768px) {
-  .main-header {
-    display: flex;
-    justify-content: space-between;
-  }
-
+@media only screen and (max-width: 425px) {
   .main-header > span {
-    display: none;
+    font-size: 18px;
   }
 
-  .main-header > a {
-    padding: 0.2rem;
-    font-size: 80%;
+  header > a {
+    font-size: 16px;
+    text-align: center;  
   }
-
-  .main-header > nav {
-    margin: 0;
+  
+  header > nav {
+    margin-left: auto;
+    font-size: 16px;
+    padding-top: 10px;
   }
-
-  .main-header > nav > a {
-    font-size: 75%;
+  
+  header > nav > a {
+    font-size: 16px;
+    padding: 0;
   }
 }
+
+
+

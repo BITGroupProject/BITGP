@@ -23,6 +23,20 @@
   text-overflow: ellipsis;
 }
 
+@media only screen and (max-width: 425px) {
+  .card {
+    width: 30%;
+    font-size: 12px;
+  }
+  .card > img {
+    width: 50%;
+    padding: 2px;
+  }
+  .card > p {
+    padding: 1px;
+  }
+}
+
 .eye {
   width: 7%;
   display: flex;
