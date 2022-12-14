@@ -2,15 +2,15 @@ import React, { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { applicationContext } from "../../context";
 
-import AllReports from "pages/AllReports/AllReports";
-import Homepage from "pages/HomePage/HomePage";
-import Wizard from "pages/Wizard/Wizard";
-import DetailPage from "pages/DetailPage/DetailPage";
+import AllReports from "./../AllReports/AllReports";
+import Homepage from "./../HomePage/HomePage";
+import Wizard from "./../Wizard/Wizard";
+import DetailPage from "./../DetailPage/DetailPage";
 
-import Footer from "components/Footer/Footer";
-import Header from "components/Header/Header";
+import Footer from "./../../components/Footer/Footer";
+import Header from "./../../components/Header/Header";
 
-import ProtectedRoute from "components/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "./../../components/ProtectedRoute/ProtectedRoute";
 
 function ProtectedPages() {
 	const { token } = useContext(applicationContext);
