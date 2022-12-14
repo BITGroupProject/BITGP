@@ -13,11 +13,13 @@ const Homepage = () => {
 	const [inputValue, setInputValue] = useState("");
 	const { allCandidates } = useContext(applicationContext);
 
-	const searchCandidate = allCandidates.filter((e) => {
-		const candidateName = e.name.toLowerCase();
+	const searchCandidate = !allCandidates.length
+		? []
+		: allCandidates.filter((e) => {
+				const candidateName = e.name.toLowerCase();
 
-		return candidateName.includes(inputValue.toLowerCase());
-	});
+				return candidateName.includes(inputValue.toLowerCase());
+		  });
 
 	return (
 		<>

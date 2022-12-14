@@ -12,14 +12,16 @@ const AllReports = () => {
 	const [inputValue, setInputValue] = useState("");
 	const { allReports } = useContext(applicationContext);
 
-	const searchReports = allReports.filter((e) => {
-		const companyName = e.companyName?.toLowerCase();
-		const candidateName = e.candidateName?.toLowerCase();
-		return (
-			companyName?.includes(inputValue.toLowerCase()) ||
-			candidateName?.includes(inputValue.toLowerCase())
-		);
-	});
+	const searchReports = !allReports.length
+		? []
+		: allReports.filter((e) => {
+				const companyName = e.companyName?.toLowerCase();
+				const candidateName = e.candidateName?.toLowerCase();
+				return (
+					companyName?.includes(inputValue.toLowerCase()) ||
+					candidateName?.includes(inputValue.toLowerCase())
+				);
+		  });
 
 	return (
 		<>

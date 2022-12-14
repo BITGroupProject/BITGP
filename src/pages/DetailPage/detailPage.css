@@ -3,7 +3,7 @@
   color: white;
 }
 
-#detailPage > .profile {
+#detailPage  .profile {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
