@@ -1,21 +1,21 @@
 .card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px 20px 70px 20px;
-    position: relative;
-    z-index: 1;
-    color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 20px 70px 20px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
 }
 
 .candidates-search {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #000;
-    margin:  0 30px;
-    padding: 15px 0;
-    font-size: 20px;
-    color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  margin: 0 30px;
+  padding: 15px 0;
+  font-size: 20px;
+  color: #fff;
 }
 
 @media only screen and (max-width: 425px) {
@@ -28,7 +28,6 @@
     }  
 }
 
-
 .bg-glass{
     background: rgba( 255, 255, 255, 0.3 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -40,3 +39,6 @@
     overflow: hidden;
     position: relative;
 }
+
+
+

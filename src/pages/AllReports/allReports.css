@@ -1,6 +1,7 @@
 .allReports input {
   width: 30%;
   margin-bottom: 30px;
+  margin-left: 595px;
 }
 
 .allReports input:focus {
@@ -14,7 +15,15 @@
   display: flex;
   flex-direction: column;
   padding: 120px;
-  background-color: thistle;
+  background: rgb(50,49,77);
+  background: linear-gradient(90deg, rgba(50,49,77,1) 0%, rgba(150,135,212,1) 60%, rgba(136,164,235,1) 98%);
+  /* background-color: thistle;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  ); */
 }
 
 .singleReport {
@@ -59,4 +68,21 @@
   border-right: 1px solid rgb(182, 180, 180);
   margin-left: 13px;
   width: 20%;
+}
+
+@media only screen and (max-width: 768px) {
+  .allReports {
+    padding: 0.5rem;
+    font-size: 50%;
+  }
+
+  .singleReport {
+    padding: 0.5rem;
+  }
+
+  .allReports > input {
+    width: 50%;
+    transform: scale(150%);
+    margin: 1rem auto;
+  }
 }

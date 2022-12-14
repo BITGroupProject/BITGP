@@ -3,6 +3,7 @@
   border: 0.05rem solid darkslategray;
   height: 16rem;
   overflow-y: scroll;
+  background-color: #fff;
 }
 
 .company--next-prev {
@@ -17,4 +18,12 @@
   display: flex;
   justify-content: flex-end;
   padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .company-search-container {
+    padding: 0 0 1rem 0;
+    transform: scale(140%);
+    justify-content: center;
+  }
 }

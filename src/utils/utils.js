@@ -25,5 +25,5 @@ export const validateEmail = (email) => {
 
 	if (email.match(mailFormat)) return true;
 
-	return false;
+	return false; 
 };

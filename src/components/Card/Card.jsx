@@ -32,7 +32,7 @@ const Card = ({ info, isList }) => {
 		setRerender(new Date().getTime()); // random vrednost, da bi mogao dependency da menja
 	};
 
-	const showSwal = () => {
+	const showSwal = () => { // sweet alert library
 		MySwal.fire({
 			title: "Are you sure?",
 			text: "You won't be able to revert this!",
@@ -46,6 +46,7 @@ const Card = ({ info, isList }) => {
 				deleteReport();
 				Swal.fire("Deleted!", "Your file has been deleted.", "success");
 			}
+			else {console.log(result);}
 		});
 	};
 
