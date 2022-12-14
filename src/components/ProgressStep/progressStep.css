@@ -9,11 +9,13 @@
   vertical-align: middle;
   text-align: center;
   color: #000;
+  cursor: default;
 }
 
 .step--name {
   color: #000;
   margin-left: -0.2rem;
+  cursor: default;
 }
 
 .step-active * {
