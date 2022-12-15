@@ -64,7 +64,7 @@ const Card = ({ info, isList }) => {
 	return (
 		<>
 			{isList ? (
-				<div className="singleReport">
+				<div className="singleReport bg-glass">
 					<div className="companyName">
 						<h2>{info.companyName}</h2>
 						<p>Company</p>

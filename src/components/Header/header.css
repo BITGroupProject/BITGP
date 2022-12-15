@@ -99,10 +99,6 @@ header .active {
 		width: 100%;
 	}
 
-	.main-header > span {
-		font-size: 18px;
-	}
-
 	.main-header > nav {
 		font-size: 16px;
 		padding-top: 10px;
@@ -149,4 +145,7 @@ header .active {
 
 
 
-
+@keyframes fadeIn { 
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}

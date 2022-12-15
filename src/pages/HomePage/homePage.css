@@ -1,9 +1,12 @@
+.homePage { 
+  min-height: calc(100vh - 100px);
+}
+
 .card-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 20px 20px 70px 20px;
   position: relative;
   z-index: 1;
   color: #fff;
@@ -11,7 +14,7 @@
 
 @media only screen and (max-width: 425px) {
     .card-wrapper {
-        padding: 10px 0;
+        padding: 0;
     }  
 }
 

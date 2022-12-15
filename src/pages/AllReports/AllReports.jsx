@@ -7,6 +7,7 @@ import Modal from "../../components/Modal/Modal";
 import Search from "../../components/Search/Search";
 import SearchError from "./../../components/SearchError/SearchError";
 import BackgroundAnimation from "../../components/BackgroundAnimation/BackgroundAnimation";
+import Loader from "../../components/Loader/Loader";
 
 const AllReports = () => {
 	const [inputValue, setInputValue] = useState("");
@@ -26,7 +27,6 @@ const AllReports = () => {
 	return (
 		<>
 			<Modal />
-
 			<div className="allReports">
 				<BackgroundAnimation />
 				<main>
@@ -40,6 +40,8 @@ const AllReports = () => {
 						<Card info={e} key={e.id} isList={true} />
 					))}
 					{inputValue && !searchReports?.length && <SearchError />}
+
+					{!!searchReports?.length && <Loader />}
 				</main>
 			</div>
 		</>

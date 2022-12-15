@@ -24,6 +24,7 @@ const LoginPage = () => {
 
 	const login = () => {
 		setIsSubmitted(true);
+		setErrorMessage("");
 
 		// validate data
 		if (!validateEmail(email)) {
@@ -36,9 +37,6 @@ const LoginPage = () => {
 			return setErrorMessage("Please enter password");
 		}
 
-		// Lets make api folder with generic api.js and separate by file for loginApi.js candidateApi.js like wrapper functions
-		// We can do this together on Monday
-
 		fetch("https://node-api-krmk.onrender.com/login", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -48,9 +46,17 @@ const LoginPage = () => {
 			}),
 		})
 			.then((response) => {
-				console.log(response);
+				// proveravamo da li je uspesan nas api poziv
 				if (response.ok) return response.json();
-				return Promise.reject("Wrong credentials!");
+
+				// ako je status od 400 do 500 (znaci nesto na frontendu nije dobro sifra, email , ruta itd
+				if (response.status < 500)
+					return Promise.reject("Wrong credentials!");
+
+				// ako je staus veci od 500 (znaci greska je na backendu)
+				return Promise.reject(
+					"Oops something went wrong, please try later!"
+				);
 			})
 
 			// if response is good do this
@@ -68,7 +74,14 @@ const LoginPage = () => {
 
 	return (
 		<>
-			<div id="loginPage">
+			<div
+				id="loginPage"
+				onKeyUp={(e) => {
+					if (e.key === `Enter`) {
+						login();
+					}
+				}}
+			>
 				<BackgroundAnimation />
 				<div className="login-wrapper bg-glass">
 					<h2>Sign in</h2>

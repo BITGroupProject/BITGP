@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { applicationContext } from "../../context";
 
 import AllReports from "./../AllReports/AllReports";
@@ -11,38 +11,47 @@ import Footer from "./../../components/Footer/Footer";
 import Header from "./../../components/Header/Header";
 
 import ProtectedRoute from "./../../components/ProtectedRoute/ProtectedRoute";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 function ProtectedPages() {
 	const { token } = useContext(applicationContext);
 
 	return (
 		<>
-			<Header />
+			{token && <Header />}
 
-			<Route
-				exact
-				path="/home"
-				render={() => (token ? <Homepage /> : <Redirect to="/" />)}
-			/>
-			<Route
-				exact
-				path="/reports"
-				render={() => (token ? <AllReports /> : <Redirect to="/" />)}
-			/>
-			{/* Higher order components */}
-			<ProtectedRoute exact path="/wizard" component={Wizard} />
-
-			{token && (
+			<Switch>
 				<Route
 					exact
-					path="/details/:id"
-					render={(routerObject) => (
-						<DetailPage id={routerObject.match.params.id} />
-					)}
+					path="/home"
+					render={() => (token ? <Homepage /> : <Redirect to="/" />)}
 				/>
-			)}
+				<Route
+					exact
+					path="/reports"
+					render={() =>
+						token ? <AllReports /> : <Redirect to="/" />
+					}
+				/>
+				{/* Higher order components */}
+				<ProtectedRoute exact path="/wizard" component={Wizard} />
 
-			<Footer />
+				{token && (
+					<Route
+						exact
+						path="/details/:id"
+						render={(routerObject) => (
+							<DetailPage id={routerObject.match.params.id} />
+						)}
+					/>
+				)}
+
+				<Route path="*">
+					<ErrorPage />
+				</Route>
+			</Switch>
+
+			{token && <Footer />}
 		</>
 	);
 }

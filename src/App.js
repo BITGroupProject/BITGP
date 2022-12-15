@@ -1,6 +1,6 @@
 import { ApplicationProvider } from "./context";
 
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import "./app.css";
 
@@ -10,6 +10,8 @@ import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 import ProtectedPages from "./pages/ProtectedPages/ProtectedPages";
+
+import fetchApi from "./services/fetchApi";
 
 function App() {
 	const [allCandidates, setAllCandidates] = useState([]);
@@ -26,6 +28,18 @@ function App() {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [modalInfo, setModalInfo] = useState({});
 
+	const history = useHistory();
+
+	const logout = () => {
+		setToken("");
+		localStorage.removeItem("token");
+		history.push("/");
+	};
+
+	const handleReports = (data) => {
+		setAllReports(data.sort((a, b) => b.id - a.id));
+	};
+
 	useEffect(() => {
 		setIsLogged(!!token);
 		const parsedData = token && parseJwt(token);
@@ -36,30 +50,20 @@ function App() {
 
 	useEffect(() => {
 		if (token) {
-			setTimeout(() => {
-				fetch(apiUrl + "/reports", {
-					headers: {
-						Authorization: "Bearer " + token,
-					},
-				})
-					.then((res) => res.json())
-					.then((data) => setAllReports(data))
-					.catch((error) => console.log(error));
-			}, 5000);
+			fetchApi("reports", handleReports, logout, {
+				Authorization: "Bearer " + token,
+			});
 		}
 	}, [token, rerender]);
 
 	useEffect(() => {
 		if (token) {
-			fetch(apiUrl + "/candidates", {
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: "Bearer " + token,
-				},
-			})
-				.then((res) => res.json())
-				.then((res) => setAllCandidates(res))
-				.catch((error) => console.log(error));
+			fetchApi("candidates", setAllCandidates, logout, {
+				Authorization: "Bearer " + token,
+			});
+			fetchApi("companies", setAllCompanies, logout, {
+				Authorization: "Bearer " + token,
+			});
 		}
 	}, [token]);
 
@@ -95,10 +99,6 @@ function App() {
 					</Route>
 
 					<ProtectedPages />
-
-					<Route path="*">
-						<ErrorPage />
-					</Route>
 				</Switch>
 			</ApplicationProvider>
 		</>
