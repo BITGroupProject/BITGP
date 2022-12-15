@@ -26,3 +26,14 @@
   word-break: break-all;
 }
 
+.profile-image {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 425px) {
+  #detailPage {
+      padding: 2rem;
+  }
+}
+
