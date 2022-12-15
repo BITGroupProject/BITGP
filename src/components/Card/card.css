@@ -43,7 +43,7 @@
 
 @media only screen and (max-width: 425px) {
   .card {
-    width: 30%;
+    width: 40%;
     font-size: 14px;
   }
   .card > img {
@@ -55,5 +55,11 @@
   }
   .interviewDate, .status {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 35%;
   }
 }
