@@ -5,7 +5,6 @@ import { Route, Switch } from "react-router-dom";
 import "./app.css";
 
 import { useEffect, useState } from "react";
-import { candidates, companies, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
@@ -26,12 +25,6 @@ function App() {
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [modalInfo, setModalInfo] = useState({});
-
-	useEffect(() => {
-		setAllCandidates(candidates);
-		setAllCompanies(companies);
-		setAllReports(reports);
-	}, []);
 
 	useEffect(() => {
 		setIsLogged(!!token);

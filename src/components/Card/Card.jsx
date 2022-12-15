@@ -82,16 +82,24 @@ const Card = ({ info, isList }) => {
 						<p>Status</p>
 					</div>
 					<div className="eye">
-						<img
-							src={eye}
-							onClick={() => {
-								setModalIsOpen(true);
-								setModalInfo(info);
-							}}
-							alt="eye"
-						/>
-
-						<img className="X" src={X} onClick={showSwal} alt="X" />
+						<figure>
+							<img
+								src={eye}
+								onClick={() => {
+									setModalIsOpen(true);
+									setModalInfo(info);
+								}}
+								alt="eye"
+							/>
+						</figure>
+						<figure>
+							<img
+								className="X"
+								src={X}
+								onClick={showSwal}
+								alt="X"
+							/>
+						</figure>
 					</div>
 				</div>
 			) : (

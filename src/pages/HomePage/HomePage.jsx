@@ -15,7 +15,7 @@ const Homepage = () => {
 
 	const searchCandidate = !allCandidates.length
 		? []
-		: allCandidates.filter((e) => {
+		: allCandidates?.filter((e) => {
 				const candidateName = e.name.toLowerCase();
 
 				return candidateName.includes(inputValue.toLowerCase());
@@ -26,13 +26,11 @@ const Homepage = () => {
 			<div className="homePage">
 				<BackgroundAnimation />
 				<main>
-					<div className="candidates-search">
-						<span>Candidates</span>
-						<Search
-							setInputValue={setInputValue}
-							inputValue={inputValue}
-						/>
-					</div>
+					<Search
+						title="Candidates"
+						setInputValue={setInputValue}
+						inputValue={inputValue}
+					/>
 					<div className="card-wrapper">
 						{searchCandidate.map((element, index) => (
 							<Card

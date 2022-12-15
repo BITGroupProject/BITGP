@@ -14,7 +14,7 @@ const AllReports = () => {
 
 	const searchReports = !allReports.length
 		? []
-		: allReports.filter((e) => {
+		: allReports?.filter((e) => {
 				const companyName = e.companyName?.toLowerCase();
 				const candidateName = e.candidateName?.toLowerCase();
 				return (
@@ -31,6 +31,7 @@ const AllReports = () => {
 				<BackgroundAnimation />
 				<main>
 					<Search
+						title="Reports"
 						setInputValue={setInputValue}
 						inputValue={inputValue}
 					/>
