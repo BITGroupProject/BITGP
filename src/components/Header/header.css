@@ -1,6 +1,6 @@
 .main-header {
   background-color: #fff;
-  padding: 8px 12px;
+  padding: 15px 12px;
   display: flex;
   align-items: center;
   color: #000;
@@ -9,20 +9,20 @@
   left: 0;
   z-index: 2;
 }
-
+.hamburger {
+	display: none;
+}
 .main-header > span {
   font-size: 25px;
   font-weight: 600;
   font-style: italic;
 }
 
-.main-header > a {
-  border: 0.1rem solid darkslategrey;
-  padding: inherit;
+.main-header .sign-out {
+  border: 1px solid #000;
+  padding: 10px 15px;
   border-radius: 3px;
   vertical-align: middle;
-  display: flex;
-  align-items: center;
   margin-left: 20px;
 }
 
@@ -32,6 +32,7 @@
 
 .main-header > nav > a {
   margin: 0 10px;
+  line-height: 1.5;
 }
 
 header .active {
@@ -44,27 +45,102 @@ header .active {
   cursor: default;
 }
 
-@media only screen and (max-width: 425px) {
-  .main-header > span {
-    font-size: 18px;
-  }
-
-  header > a {
-    font-size: 16px;
-    text-align: center;  
-  }
-  
-  header > nav {
-    margin-left: auto;
-    font-size: 16px;
-    padding-top: 10px;
-  }
-  
-  header > nav > a {
-    font-size: 16px;
-    padding: 0;
-  }
+.line {
+	fill: none;
+	stroke: black;
+	stroke-width: 4;
+	transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+	stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.line1 {
+	stroke-dasharray: 60 207;
+	stroke-width: 4;
+}
+.line2 {
+	stroke-dasharray: 60 60;
+	stroke-width: 4;
+}
+.line3 {
+	stroke-dasharray: 60 207;
+	stroke-width: 4;
+}
+.opened .line1 {
+	stroke-dasharray: 90 207;
+	stroke-dashoffset: -134;
+	stroke-width: 4;
+}
+.opened .line2 {
+	stroke-dasharray: 1 60;
+	stroke-dashoffset: -30;
+	stroke-width: 4;
+}
+.opened .line3 {
+	stroke-dasharray: 90 207;
+	stroke-dashoffset: -134;
+	stroke-width: 4;
+}
+
+@media only screen and (max-width: 768px) {
+	
+	.main-header  {
+		flex-direction: column;
+	}
+
+	.main-header > div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+
+	.main-header > span {
+		font-size: 18px;
+	}
+
+	.main-header > nav {
+		font-size: 16px;
+		padding-top: 10px;
+		display: none;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: calc(100vh - 70px);
+	}
+
+	.main-header > nav.show {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+	}
+
+	.main-header > nav > a {
+		font-size: 16px;
+		padding: 0;
+		margin: 10px 0;
+		text-align: center;
+		width: 100%;
+	}
+
+	.main-header > nav > a.sign-out {
+		font-size: 16px;
+		padding: 0;
+		margin: 10px 0;
+
+		
+	}
+
+	.hamburger{
+		display: inline-block;
+		margin-left: auto;
+		padding: 3px 5px ;
+		background-color: #fff;
+		border: unset;
+	}
+}
+
+
+
 
 
 
