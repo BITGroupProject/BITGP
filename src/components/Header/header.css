@@ -9,13 +9,14 @@
   left: 0;
   z-index: 2;
 }
+
 .hamburger {
 	display: none;
 }
-.main-header > span {
-  font-size: 25px;
+
+.main-header span {
+  font-size: 22px;
   font-weight: 600;
-  font-style: italic;
 }
 
 .main-header .sign-out {
@@ -91,10 +92,6 @@ header .active {
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-	}
-
-	.main-header > span {
-		font-size: 18px;
 	}
 
 	.main-header > nav {
