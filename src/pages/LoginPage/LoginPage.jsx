@@ -67,7 +67,14 @@ const LoginPage = () => {
 
   return (
     <>
-      <div id="loginPage">
+      <div
+        id="loginPage"
+        onKeyUp={(e) => {
+          if (e.key === `Enter`) {
+            login();
+          }
+        }}
+      >
         <BackgroundAnimation />
         <div className="login-wrapper bg-glass">
           <h2>Sign in</h2>
