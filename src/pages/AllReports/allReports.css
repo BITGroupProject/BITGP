@@ -49,6 +49,7 @@
 
 @media only screen and (max-width: 768px) {
   .allReports {
+    padding: 1rem;
     font-size: 14px;
   }
   .singleReport {
