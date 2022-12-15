@@ -24,14 +24,16 @@ const AllReports = () => {
 	return (
 		<>
 			<Modal />
-
 			<div className="allReports">
-				<BackgroundAnimation />
+			<BackgroundAnimation />
 				<main>
-					<Search
-						setInputValue={setInputValue}
-						inputValue={inputValue}
-					/>
+				<div className="candidates-search">
+				<span>Reports</span>
+						<Search
+							setInputValue={setInputValue}
+							inputValue={inputValue}
+						/>
+					</div>
 
 					{searchReports.map((e) => (
 						<Card info={e} key={e.id} isList={true} />
