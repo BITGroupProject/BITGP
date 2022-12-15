@@ -27,13 +27,26 @@ const Card = ({ info, isList }) => {
 			},
 		})
 			.then((res) => res.json())
-			.then((res) => console.log(res))
-			.catch((error) => console.log(error));
+			.then((res) =>
+				MySwal.fire(
+					"Deleted!",
+					"Your report has been deleted.",
+					"success"
+				)
+			)
+			.catch((error) =>
+				MySwal.fire(
+					"Error!",
+					"Your report has not been deleted.",
+					"error"
+				)
+			);
 
 		setRerender(new Date().getTime()); // random vrednost, da bi mogao dependency da menja
 	};
 
-	const showSwal = () => { // sweet alert library
+	const showSwal = () => {
+		// sweet alert library
 		MySwal.fire({
 			title: "Are you sure?",
 			text: "You won't be able to revert this!",
@@ -45,16 +58,14 @@ const Card = ({ info, isList }) => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				deleteReport();
-				Swal.fire("Deleted!", "Your file has been deleted.", "success");
 			}
-			else {console.log(result);}
 		});
 	};
 
 	return (
 		<>
 			{isList ? (
-				<div className="singleReport">
+				<div className="singleReport bg-glass">
 					<div className="companyName">
 						<h2>{info.companyName}</h2>
 						<p>Company</p>
@@ -72,20 +83,28 @@ const Card = ({ info, isList }) => {
 						<p>Status</p>
 					</div>
 					<div className="eye">
-						<img
-							src={eye}
-							onClick={() => {
-								setModalIsOpen(true);
-								setModalInfo(info);
-							}}
-							alt="eye"
-						/>
-
-						<img className="X" src={X} onClick={showSwal} alt="X" />
+						<figure>
+							<img
+								src={eye}
+								onClick={() => {
+									setModalIsOpen(true);
+									setModalInfo(info);
+								}}
+								alt="eye"
+							/>
+						</figure>
+						<figure>
+							<img
+								className="X"
+								src={X}
+								onClick={showSwal}
+								alt="X"
+							/>
+						</figure>
 					</div>
 				</div>
 			) : (
-				<Link to={`/details/${info.id}`} className="card bg-">
+				<Link to={`/details/${info.id}`} className="card bg-glass">
 					<img
 						src="https://commentpara.de/img/anonymous.svg"
 						alt="candidate"

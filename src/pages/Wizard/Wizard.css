@@ -1,7 +1,6 @@
 .wizard-container {
   display: flex;
   padding: 2rem 10%;
-  background-color: thistle;
 }
 
 .wizard--panel {
@@ -12,4 +11,14 @@
 
 .step-hidden {
   display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .wizard-container {
+    padding: 2rem 0.5rem 0 0.5rem;
+  }
+  .wizard--panel {
+    border: none;
+    padding: 0;
+  }
 }

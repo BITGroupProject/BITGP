@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Header from "../../components/Header/Header";
+import ProgressSideBarNav from "../../components/ProgressSideBarNav/ProgressSideBarNav";
 import Candidate from "../../components/Candidate/Candidate";
 import Company from "../../components/Company/Company";
 import ReportDetails from "../../components/ReportDetails/ReportDetails";
 import ReportSuccess from "../../components/ReportSucess/ReportSucess";
-import ProgressSideBarNav from "../../components/ProgressSideBarNav/ProgressSideBarNav";
+import BackgroundAnimation from "./../../components/BackgroundAnimation/BackgroundAnimation";
 import "./Wizard.css";
 
 function Wizard(props) {
@@ -77,6 +77,7 @@ function Wizard(props) {
 
 	return (
 		<>
+			<BackgroundAnimation />
 			<article className="wizard-container">
 				<ProgressSideBarNav
 					step={step}

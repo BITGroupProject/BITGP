@@ -1,21 +1,17 @@
 import { ApplicationProvider } from "./context";
-import HomePage from "./pages/HomePage/HomePage";
 
-import { Redirect, Route, Switch } from "react-router-dom";
-import AllReports from "./pages/AllReports/AllReports";
-import Wizard from "./pages/Wizard/Wizard";
+import { Route, Switch, useHistory } from "react-router-dom";
+
 import "./app.css";
 
-import DetailPage from "./pages/DetailPage/DetailPage";
 import { useEffect, useState } from "react";
-import { candidates, companies, reports } from "./data";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import ProtectedPages from "./pages/ProtectedPages/ProtectedPages";
+
+import fetchApi from "./services/fetchApi";
 
 function App() {
 	const [allCandidates, setAllCandidates] = useState([]);
@@ -32,11 +28,17 @@ function App() {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [modalInfo, setModalInfo] = useState({});
 
-	useEffect(() => {
-		setAllCandidates(candidates);
-		setAllCompanies(companies);
-		setAllReports(reports);
-	}, []);
+	const history = useHistory();
+
+	const logout = () => {
+		setToken("");
+		localStorage.removeItem("token");
+		history.push("/");
+	};
+
+	const handleReports = (data) => {
+		setAllReports(data.sort((a, b) => b.id - a.id));
+	};
 
 	useEffect(() => {
 		setIsLogged(!!token);
@@ -48,30 +50,20 @@ function App() {
 
 	useEffect(() => {
 		if (token) {
-			setTimeout(() => {
-				fetch(apiUrl + "/reports", {
-					headers: {
-						Authorization: "Bearer " + token,
-					},
-				})
-					.then((res) => res.json())
-					.then((data) => setAllReports(data))
-					.catch((error) => console.log(error));
-			}, 5000);
+			fetchApi("reports", handleReports, logout, {
+				Authorization: "Bearer " + token,
+			});
 		}
 	}, [token, rerender]);
 
 	useEffect(() => {
 		if (token) {
-			fetch(apiUrl + "/candidates", {
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: "Bearer " + token,
-				},
-			})
-				.then((res) => res.json())
-				.then((res) => setAllCandidates(res))
-				.catch((error) => console.log(error));
+			fetchApi("candidates", setAllCandidates, logout, {
+				Authorization: "Bearer " + token,
+			});
+			fetchApi("companies", setAllCompanies, logout, {
+				Authorization: "Bearer " + token,
+			});
 		}
 	}, [token]);
 
@@ -101,48 +93,13 @@ function App() {
 					setRerender,
 				}}
 			>
-				{window.location.pathname !== "/" && <Header />}
-
 				<Switch>
 					<Route exact path="/">
 						<LoginPage />
 					</Route>
 
-					<Route
-						exact
-						path="/home"
-						render={() =>
-							token ? <HomePage /> : <Redirect to="/" />
-						}
-					/>
-
-					<Route
-						exact
-						path="/reports"
-						render={() =>
-							token ? <AllReports /> : <Redirect to="/" />
-						}
-					/>
-
-					{/* Higher order components */}
-					<ProtectedRoute exact path="/wizard" component={Wizard} />
-
-					{token && (
-						<Route
-							exact
-							path="/details/:id"
-							render={(routerObject) => (
-								<DetailPage id={routerObject.match.params.id} />
-							)}
-						/>
-					)}
-
-					<Route path="*">
-						<ErrorPage />
-					</Route>
+					<ProtectedPages />
 				</Switch>
-
-				{window.location.pathname !== "/" && <Footer />}
 			</ApplicationProvider>
 		</>
 	);

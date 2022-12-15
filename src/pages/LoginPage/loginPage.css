@@ -5,6 +5,7 @@
     min-height: 100vh;
     color: #fff;
 }
+
 #loginPage > .login-wrapper{
     display: flex;
     align-items: center;
@@ -22,7 +23,7 @@
     display: block;
     margin: 5px 0;
     padding: 8px 12px;
-    border-radius: 5px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -35,7 +36,7 @@
 #loginPage  button {
     min-width: 150px;
     padding: 10px 0;
-    border-radius: 5px;
+    border-radius: 10px;
     border: unset;
 }
 
@@ -45,4 +46,10 @@
     margin: 0;
     padding: 5px 0;
     color: red;
+}
+
+@media only screen and (max-width: 425px) {
+    #loginPage > .login-wrapper{
+        padding: 10px 20px;
+    }
 }

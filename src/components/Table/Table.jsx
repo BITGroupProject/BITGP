@@ -12,9 +12,11 @@ const Table = ({ id }) => {
 		useContext(applicationContext);
 
 	const findReports = () => {
-		const tmp = allReports.filter(
-			(element) => element.candidateId === Number(id)
-		);
+		const tmp = !allReports.length
+			? []
+			: allReports.filter(
+					(element) => element.candidateId === Number(id)
+			  );
 		setReports(tmp);
 	};
 

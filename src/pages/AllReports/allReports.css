@@ -1,70 +1,11 @@
-.allReports input {
-  width: 30%;
-  margin-bottom: 30px;
-}
-
-.allReports input:focus {
-  outline: none;
-}
-.allReports input:focus::placeholder {
-  color: transparent;
-}
-
 .allReports {
   display: flex;
   flex-direction: column;
-  padding: 120px;
-  background-color: thistle;
 }
 
-.singleReport {
-  display: flex;
-  /* border: 1px solid black; */
-  margin-bottom: 25px;
-
-  padding: 13px;
-  /* background-color: white; */
-  /* border-radius: 10px; */
-
-  background: rgba( 255, 255, 255, 0.3 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 0px );
-    -webkit-backdrop-filter: blur( 0px );
-    border-radius: 10px;
-    border: 1px solid #fff;
-    backdrop-filter: blur(2px);
-    overflow: hidden;
-    position: relative;
-}
-
-.singleReport h2 {
-  font-weight: 300;
-}
-
-.singleReport p {
-  font-size: 15px;
-  color: rgb(182, 180, 180);
-}
-
-.companyName {
-  border-right: 1px solid rgb(182, 180, 180);
-  width: 30%;
-}
-
-.candidateName {
-  border-right: 1px solid rgb(182, 180, 180);
-  width: 30%;
-  margin-left: 13px;
-}
-
-.interviewDate {
-  border-right: 1px solid rgb(182, 180, 180);
-  margin-left: 13px;
-  width: 20%;
-}
-
-.status {
-  border-right: 1px solid rgb(182, 180, 180);
-  margin-left: 13px;
-  width: 20%;
+@media only screen and (max-width: 768px) {
+  .allReports {
+    padding: 10px;
+    font-size: 50%;
+  }
 }

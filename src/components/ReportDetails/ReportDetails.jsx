@@ -8,14 +8,39 @@ function ReportDetails(props) {
       <section>
         <div className="report-input-fields">
           <div className="report-input-container">
-            <span className="report-input-label">Interview Date:</span>
+            <span
+              className={
+                !props.interviewDate ||
+                Date.parse(props.interviewDate) < Date.parse(new Date())
+                  ? `report-input-label`
+                  : `report-input-warning report-input-label`
+              }
+            >
+              Interview Date:
+            </span>
             <input
+              className={
+                !props.interviewDate ||
+                Date.parse(props.interviewDate) < Date.parse(new Date())
+                  ? ``
+                  : `report-input-warning report-input-warning-shadow`
+              }
               onFocus={(e) => {}}
               onChange={(e) => {
                 props.setInterviewDate(e.target.value);
               }}
               type="date"
             ></input>
+            <span
+              className={
+                !props.interviewDate ||
+                Date.parse(props.interviewDate) < Date.parse(new Date())
+                  ? `btn-hidden `
+                  : `report-input-label report-input-warning`
+              }
+            >
+              Date cannot be in the future.
+            </span>
           </div>{" "}
           <div className="report-input-container">
             <span className="report-input-label">Phase:</span>

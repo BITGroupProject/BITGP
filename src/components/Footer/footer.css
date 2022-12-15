@@ -3,10 +3,12 @@ footer {
   background-color: #fff;
   text-align: center;
   font-size: 80%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 2;
-  color: #000;
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 425px) {
+  footer {
+    font-size: 14px;
+  }
 }

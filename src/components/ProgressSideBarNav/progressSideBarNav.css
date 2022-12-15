@@ -1,28 +1,11 @@
 .progress--side-bar {
   padding-right: 2rem;
-  min-width: 25%;
+  min-width: 28%;
+  cursor: default;
 }
 
 .progress--steps {
   margin-bottom: 2rem;
-}
-
-.step--number {
-  display: inline-block;
-  border: 0.1rem solid grey;
-  border-radius: 5rem;
-  height: 2rem;
-  width: 2rem;
-  padding: 0.3rem;
-  margin: 0.2rem;
-  vertical-align: middle;
-  text-align: center;
-  color: grey;
-}
-
-.step--name {
-  color: grey;
-  margin-left: 0.1rem;
 }
 
 .progress--completed {
@@ -31,16 +14,18 @@
 }
 
 .progress--detail-title {
-  color: grey;
+  color: #000;
   font-size: 70%;
   margin-top: 1rem;
   margin-bottom: 0.4rem;
 }
 
-.step-active * {
-  color: black;
+.progress--detail {
+  color: #fff;
 }
 
-.step-active > .step--number {
-  border: 0.1rem solid black;
+@media only screen and (max-width: 768px) {
+  .progress--side-bar {
+    display: none;
+  }
 }

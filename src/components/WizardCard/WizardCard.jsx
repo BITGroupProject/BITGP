@@ -14,8 +14,8 @@ function WizardCard(props) {
       onClick={select}
       className={
         props.candidate.activeCandidate == props.id
-          ? `wizard-card wizard-card--selected`
-          : `wizard-card`
+          ? `wizard-card wizard-card--selected bg-glass`
+          : `wizard-card bg-glass`
       }
     >
       <img
