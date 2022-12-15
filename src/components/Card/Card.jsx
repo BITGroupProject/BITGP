@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { applicationContext } from "../../context";
 import { formattedDate } from "../../utils/utils";
 
+
 import "./card.css";
 import { Link } from "react-router-dom";
 import eye from "./eye icon.png";
