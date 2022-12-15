@@ -1,16 +1,13 @@
 .card {
-  width: 20%;
-  margin: 10px;
-  box-shadow: -1px 0px 5px -1px rgb(28, 30, 68);
-  -webkit-box-shadow: -1px 0px 5px -1px rgb(28, 30, 68);
-  -moz-box-shadow: -1px 0px 5px -1px rgb(28, 30, 68);
+  width: 23%;
+  margin: 8px;
   padding: 10px;
   text-decoration: none;
-  color: rgb(28, 30, 68);
+  color: black;
 }
 
 .card > img {
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   display: block;
 }
@@ -23,10 +20,31 @@
   text-overflow: ellipsis;
 }
 
+.eye {
+  width: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.eye > img {
+  cursor: pointer;
+  padding: 1px;
+}
+
+.eye > img:first-child {
+  width: 50%;
+}
+
+.X {
+  width: 30%;
+}
+
 @media only screen and (max-width: 425px) {
   .card {
     width: 30%;
-    font-size: 12px;
+    font-size: 14px;
   }
   .card > img {
     width: 50%;
@@ -35,24 +53,7 @@
   .card > p {
     padding: 1px;
   }
-}
-
-.eye {
-  width: 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
-}
-
-.eye > img {
-  cursor: pointer;
-}
-
-.eye > img:first-child {
-  width: 55%;
-}
-
-.X {
-  width: 35%;
+  .interviewDate, .status {
+    display: none;
+  }
 }

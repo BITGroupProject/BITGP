@@ -1,38 +1,14 @@
-.allReports input {
-  width: 30%;
-  margin-bottom: 30px;
-  margin-left: 595px;
-}
-
-.allReports input:focus {
-  outline: none;
-}
-.allReports input:focus::placeholder {
-  color: transparent;
-}
-
 .allReports {
   display: flex;
   flex-direction: column;
-  padding: 120px;
   background: rgb(50,49,77);
   background: linear-gradient(90deg, rgba(50,49,77,1) 0%, rgba(150,135,212,1) 60%, rgba(136,164,235,1) 98%);
-  /* background-color: thistle;
-  background-image: linear-gradient(
-    43deg,
-    #4158d0 0%,
-    #c850c0 46%,
-    #ffcc70 100%
-  ); */
+  min-height: calc(100vh - 100px);
 }
 
 .singleReport {
   display: flex;
-  /* border: 1px solid black; */
-  margin-bottom: 25px;
-  -webkit-box-shadow: 0px 1px 4px 2px rgba(201, 199, 201, 1);
-  -moz-box-shadow: 0px 1px 4px 2px rgba(201, 199, 201, 1);
-  box-shadow: 0px 1px 4px 2px rgba(201, 199, 201, 1);
+  margin: 25px 30px 25px 30px;
   padding: 13px;
   background-color: white;
   border-radius: 10px;
@@ -72,17 +48,34 @@
 
 @media only screen and (max-width: 768px) {
   .allReports {
-    padding: 0.5rem;
-    font-size: 50%;
+    font-size: 14px;
   }
-
   .singleReport {
-    padding: 0.5rem;
+    margin: 20px 25px 20px 25px;
+    padding: 9px;
+    background-color: white;
+    border-radius: 10px;
   }
+}
 
-  .allReports > input {
-    width: 50%;
-    transform: scale(150%);
-    margin: 1rem auto;
+@media only screen and (max-width: 425px) {
+  .allReports {
+    font-size: 12px;
+  }
+  .companyName {
+    width: 35%;
+  }
+  .candidateName {
+    width: 45%;
+  }
+  .eye {
+    width: 20%;
+  } 
+  .eye > img:first-child {
+    width: 35%;
+  }
+  
+  .X {
+    width: 20%;
   }
 }

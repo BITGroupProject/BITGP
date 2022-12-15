@@ -10,8 +10,7 @@ const Error = () => {
         <img src={Sadness} alt="disappointed cartoon character" />
       </div>
       <p>
-        We couldn't find what you were looking for. Please try with other
-        criteria.
+        We couldn't find what you were looking for. Please try with another criteria.
       </p>
     </div>
   );
