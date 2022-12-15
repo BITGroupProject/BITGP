@@ -6,7 +6,6 @@ import { formattedDate } from "../../utils/utils";
 const Modal = () => {
 	const { modalIsOpen, setModalIsOpen, modalInfo, setModalInfo } =
 		useContext(applicationContext);
-	console.log(modalInfo);
 
 	const date =
 		modalInfo?.interviewDate &&
