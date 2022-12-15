@@ -1,6 +1,8 @@
 .card {
-  width: 23%;
-  margin: 8px;
+  width: 225px;
+  box-shadow: -1px 0px 5px -1px rgb(28, 30, 68);
+  -webkit-box-shadow: -1px 0px 5px -1px rgb(28, 30, 68);
+  -moz-box-shadow: -1px 0px 5px -1px rgb(28, 30, 68);
   padding: 10px;
   text-decoration: none;
   color: black;
@@ -20,48 +22,95 @@
   text-overflow: ellipsis;
 }
 
-.eye {
-  width: 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: row;
-}
 
-.eye > img {
-  cursor: pointer;
-  padding: 1px;
-}
 
-.eye > img:first-child {
-  width: 50%;
-}
-
-.X {
-  width: 30%;
-}
-
-@media only screen and (max-width: 768px) {
-  .card {
-    width: 35%;
-  }
-}
 
 @media only screen and (max-width: 425px) {
   .card {
-    width: 40%;
-    font-size: 14px;
+    width: 100%;
+    font-size: 16px;
   }
   .card > img {
     width: 50%;
-    padding: 2px;
   }
-  .card > p {
-    padding: 1px;
+}
+
+
+
+
+.singleReport {
+  display: flex;
+  margin-bottom: 25px;
+  padding: 13px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.singleReport h2 {
+  font-weight: 300;
+}
+
+.singleReport p {
+  font-size: 15px;
+  color: rgb(59, 58, 58);
+}
+
+.companyName, .candidateName, .interviewDate,  .status {
+  border-right: 1px solid rgb(182, 180, 180);
+  width: 25%;
+  margin-left: 13px;
+}
+.interviewDate, .status {
+  width: 20%;
+}
+
+.eye {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 15%;
+}
+
+.eye > figure > img {
+  cursor: pointer;
+  width: 20px;
+}
+
+.eye > figure:nth-child(1) > img {
+  width: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .singleReport {
+    padding: 10px;
+  }
+
+  .companyName, .candidateName, .interviewDate,  .status {
+    width: 40%;
   }
   .interviewDate, .status {
     display: none;
   }
+
+  .eye {
+    width: 20%;
+  }
+  .eye > figure > img {
+    width: 15px;
+  }
+
+  .eye > figure:nth-child(1) > img {
+    width: 20px;
+  }
 }
+
+@media only screen and (max-width: 425px) {
+  .interviewDate, .status {
+    display: none;
+  }
+}
+
+
 
 

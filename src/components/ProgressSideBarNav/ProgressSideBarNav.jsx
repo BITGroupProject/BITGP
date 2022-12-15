@@ -17,6 +17,7 @@ function ProgressSideBarNav(props) {
 							stepName={el}
 							step={props.step}
 							stage={i + 1}
+							key={"step-" + i}
 						/>
 					);
 				})}

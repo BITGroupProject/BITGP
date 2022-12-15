@@ -1,83 +1,18 @@
 .allReports {
   display: flex;
   flex-direction: column;
-  background: rgb(50,49,77);
-  background: linear-gradient(90deg, rgba(50,49,77,1) 0%, rgba(150,135,212,1) 60%, rgba(136,164,235,1) 98%);
-  min-height: calc(100vh - 100px);
-  padding: 2rem 5rem;
-}
-
-.singleReport {
-  display: flex;
-  margin: 25px 30px 25px 30px;
-  padding: 13px;
-  background-color: white;
-  border-radius: 10px;
-}
-
-.singleReport h2 {
-  font-weight: 300;
-}
-
-.singleReport p {
-  font-size: 15px;
-  color: rgb(182, 180, 180);
-}
-
-.companyName {
-  border-right: 1px solid rgb(182, 180, 180);
-  width: 30%;
-}
-
-.candidateName {
-  border-right: 1px solid rgb(182, 180, 180);
-  width: 30%;
-  margin-left: 13px;
-}
-
-.interviewDate {
-  border-right: 1px solid rgb(182, 180, 180);
-  margin-left: 13px;
-  width: 20%;
-}
-
-.status {
-  border-right: 1px solid rgb(182, 180, 180);
-  margin-left: 13px;
-  width: 20%;
+  background: rgb(50, 49, 77);
+  background: linear-gradient(
+    90deg,
+    rgba(50, 49, 77, 1) 0%,
+    rgba(150, 135, 212, 1) 60%,
+    rgba(136, 164, 235, 1) 98%
+  );
 }
 
 @media only screen and (max-width: 768px) {
   .allReports {
-    padding: 1rem;
-    font-size: 14px;
-  }
-  .singleReport {
-    margin: 20px 25px 20px 25px;
-    padding: 9px;
-    background-color: white;
-    border-radius: 10px;
-  }
-}
-
-@media only screen and (max-width: 425px) {
-  .allReports {
-    font-size: 12px;
-  }
-  .companyName {
-    width: 35%;
-  }
-  .candidateName {
-    width: 45%;
-  }
-  .eye {
-    width: 20%;
-  } 
-  .eye > img:first-child {
-    width: 35%;
-  }
-  
-  .X {
-    width: 20%;
+    padding: 10px;
+    font-size: 50%;
   }
 }

@@ -27,15 +27,15 @@ input {
   background-color: #fff;
   border: 0.1rem solid lightgrey;
   padding: 0.05rem;
-  border-radius: 0.1rem;
+  border-radius: 10pxrem;
   padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 10px;
 }
 
 .report-textarea {
   height: 5rem;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 10px;
 }
 
 .company--next-prev {

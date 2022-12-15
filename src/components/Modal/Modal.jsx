@@ -10,10 +10,6 @@ const Modal = () => {
 	const date =
 		modalInfo?.interviewDate &&
 		formattedDate(modalInfo?.interviewDate, ".");
-	// Lets make Modal as a wrapper component that takes children props and we can reuse it for multiple things
-	// like this <Modal><ModalContent /></Modal>
-	// so we can reuse it on delete report, I want to open Modal preview before deleting item
-	// we can do this together on Monday :)
 	return (
 		<>
 			<div className={`modal ${modalIsOpen ? "show" : ""}`}>

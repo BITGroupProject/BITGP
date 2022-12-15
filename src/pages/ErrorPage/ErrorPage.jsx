@@ -12,7 +12,7 @@ const ErrorPage = () => {
 	return (
 		<>
 			<BackgroundAnimation />
-			<section id="errorPage">
+			<section id="errorPage" className={token ? "" : "notLogged"}>
 				<main>
 					<div className="bg-glass">
 						<h1>Oops!</h1>
