@@ -64,10 +64,10 @@ function ReportDetails(props) {
                 props.setStatus(e.target.value);
               }}
             >
-              <option value={true}>Passed</option>
-              <option value={false}>Declined</option>
-            </select>{" "}
-          </div>{" "}
+              <option value={"Passed"}>Passed</option>
+              <option value={"Declined"}>Declined</option>
+            </select>
+          </div>
         </div>
         <div className="report-input-comment">
           <span className="report-input-label">Notes:</span>
