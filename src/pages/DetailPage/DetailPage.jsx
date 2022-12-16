@@ -3,23 +3,23 @@ import BackgroundAnimation from "../../components/BackgroundAnimation/Background
 import Table from "../../components/Table/Table";
 import { applicationContext } from "../../context";
 import Modal from "../../components/Modal/Modal";
+import fetchApi from "./../../services/fetchApi";
 
 import "./detailPage.css";
+import { useHistory } from "react-router-dom";
 
 const DetailPage = ({ id }) => {
 	const [candidate, setCandidate] = useState({});
-	const { apiUrl, token } = useContext(applicationContext);
+	const { token } = useContext(applicationContext);
 
+	const history = useHistory();
+	const errorHandle = () => {
+		history.goBack();
+	};
 	const getCandidate = (id) => {
-		fetch(`${apiUrl}/candidates/${id}`, {
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: "Bearer " + token,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => setCandidate(data))
-			.catch((error) => console.log(error));
+		fetchApi(`candidates/${id}`, setCandidate, errorHandle, {
+			Authorization: "Bearer " + token,
+		});
 	};
 
 	const findCandidate = () => {
