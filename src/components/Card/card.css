@@ -22,9 +22,6 @@
   text-overflow: ellipsis;
 }
 
-
-
-
 @media only screen and (max-width: 425px) {
   .card {
     width: 100%;
@@ -34,9 +31,6 @@
     width: 50%;
   }
 }
-
-
-
 
 .singleReport {
   display: flex;
@@ -55,12 +49,16 @@
   color: rgb(59, 58, 58);
 }
 
-.companyName, .candidateName, .interviewDate,  .status {
+.companyName,
+.candidateName,
+.interviewDate,
+.status {
   border-right: 1px solid rgb(182, 180, 180);
   width: 25%;
   margin-left: 13px;
 }
-.interviewDate, .status {
+.interviewDate,
+.status {
   width: 20%;
 }
 
@@ -81,22 +79,25 @@
 }
 
 @media only screen and (max-width: 768px) {
-
   .singleReport {
     padding: 10px;
   }
 
-  .companyName, .candidateName, .interviewDate,  .status {
+  .companyName,
+  .candidateName,
+  .interviewDate,
+  .status {
     width: 40%;
   }
-  .interviewDate, .status {
+  .interviewDate,
+  .status {
     display: none;
   }
 
   .eye {
     width: 20%;
   }
-  }
+
   .eye > figure > img {
     width: 15px;
   }
@@ -107,9 +108,8 @@
 }
 
 @media only screen and (max-width: 425px) {
-  .interviewDate, .status {
+  .interviewDate,
+  .status {
     display: none;
   }
 }
-
-
