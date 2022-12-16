@@ -6,7 +6,7 @@ import { applicationContext } from "../../context";
 const Header = () => {
 	const [isShown, setIsShown] = useState(false);
 
-	const { setToken } = useContext(applicationContext);
+	const { setToken, isAdmin } = useContext(applicationContext);
 	const history = useHistory();
 	const location = useLocation();
 
@@ -59,15 +59,17 @@ const Header = () => {
 					>
 						Reports
 					</Link>
-					<Link
-						onClick={() => setIsShown(false)}
-						to="/wizard"
-						className={
-							location.pathname === "/wizard" ? "active" : ""
-						}
-					>
-						Create report
-					</Link>
+					{isAdmin && (
+						<Link
+							onClick={() => setIsShown(false)}
+							to="/wizard"
+							className={
+								location.pathname === "/wizard" ? "active" : ""
+							}
+						>
+							Create report
+						</Link>
+					)}
 
 					<Link className="sign-out" to="/" onClick={logout}>
 						Sign out

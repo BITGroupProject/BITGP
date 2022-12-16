@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { applicationContext } from "../../context";
 import { formattedDate } from "../../utils/utils";
 
-
 import "./card.css";
 import { Link } from "react-router-dom";
 import eye from "./eye icon.png";
@@ -15,8 +14,14 @@ const MySwal = withReactContent(Swal);
 
 const Card = ({ info, isList }) => {
 	const date = info?.interviewDate && formattedDate(info?.interviewDate, ".");
-	const { setModalIsOpen, setModalInfo, token, apiUrl, setRerender } =
-		useContext(applicationContext);
+	const {
+		setModalIsOpen,
+		setModalInfo,
+		token,
+		apiUrl,
+		setRerender,
+		isAdmin,
+	} = useContext(applicationContext);
 
 	const deleteReport = async () => {
 		await fetch(apiUrl + "/reports/" + info.id, {
@@ -93,14 +98,16 @@ const Card = ({ info, isList }) => {
 								alt="eye"
 							/>
 						</figure>
-						<figure>
-							<img
-								className="X"
-								src={X}
-								onClick={showSwal}
-								alt="X"
-							/>
-						</figure>
+						{isAdmin && (
+							<figure>
+								<img
+									className="X"
+									src={X}
+									onClick={showSwal}
+									alt="X"
+								/>
+							</figure>
+						)}
 					</div>
 				</div>
 			) : (

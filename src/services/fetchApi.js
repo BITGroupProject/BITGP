@@ -38,14 +38,23 @@ const fetchApi = (url, callbackData, callbackError, options) => {
 		})
 		.then((res) => callbackData(res))
 		.catch((error) => {
-			MySwal.fire({
-				title: "Your session expired",
-				text: "Please sign in again!",
-				icon: "error",
-				confirmButtonText: "ok",
-			}).then((result) => {
-				callbackError();
-			});
+			if (error?.message === "Failed to fetch") {
+				MySwal.fire({
+					title: error?.message,
+					text: "Please refresh page!",
+					icon: "error",
+					confirmButtonText: "ok",
+				});
+			} else {
+				MySwal.fire({
+					title: error,
+					text: "Please sign in again!",
+					icon: "error",
+					confirmButtonText: "ok",
+				}).then((result) => {
+					callbackError();
+				});
+			}
 		});
 };
 

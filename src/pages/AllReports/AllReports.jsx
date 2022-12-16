@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Card from "../../components/Card/Card";
 import "./allReports.css";
 
@@ -11,7 +11,7 @@ import Loader from "../../components/Loader/Loader";
 
 const AllReports = () => {
 	const [inputValue, setInputValue] = useState("");
-	const { allReports } = useContext(applicationContext);
+	const { allReports, setRerender } = useContext(applicationContext);
 
 	const searchReports = !allReports.length
 		? []
@@ -24,6 +24,9 @@ const AllReports = () => {
 				);
 		  });
 
+	useEffect(() => {
+		setRerender(Math.random());
+	}, []);
 	return (
 		<>
 			<Modal />

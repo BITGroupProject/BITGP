@@ -3,13 +3,21 @@ import { Redirect, Route } from "react-router-dom";
 import { applicationContext } from "../../context";
 
 function ProtectedRoute({ component: Component, ...restOfProps }) {
-	const { token } = useContext(applicationContext);
+	const { token, isAdmin } = useContext(applicationContext);
 
 	return (
 		<Route
 			{...restOfProps}
 			render={(props) =>
-				token ? <Component {...props} /> : <Redirect to="/" />
+				token ? (
+					isAdmin ? (
+						<Component {...props} />
+					) : (
+						<Redirect to="/error" />
+					)
+				) : (
+					<Redirect to="/" />
+				)
 			}
 		/>
 	);

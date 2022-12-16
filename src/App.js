@@ -7,7 +7,6 @@ import "./app.css";
 import { useEffect, useState } from "react";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { parseJwt } from "./utils/utils";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 import ProtectedPages from "./pages/ProtectedPages/ProtectedPages";
 
@@ -50,9 +49,11 @@ function App() {
 
 	useEffect(() => {
 		if (token) {
-			fetchApi("reports", handleReports, logout, {
-				Authorization: "Bearer " + token,
-			});
+			setTimeout(() => {
+				fetchApi("reports", handleReports, logout, {
+					Authorization: "Bearer " + token,
+				});
+			}, 1000);
 		}
 	}, [token, rerender]);
 
