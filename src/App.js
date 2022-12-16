@@ -45,8 +45,6 @@ function App() {
 		setIsAdmin(parsedData?.email === "admin@admin.com");
 	}, [token]);
 
-	const apiUrl = "https://node-api-krmk.onrender.com/api"; // when using add /your-api-route
-
 	useEffect(() => {
 		if (token) {
 			setTimeout(() => {
@@ -88,8 +86,6 @@ function App() {
 					modalIsOpen,
 
 					isAdmin,
-
-					apiUrl,
 
 					setRerender,
 				}}
