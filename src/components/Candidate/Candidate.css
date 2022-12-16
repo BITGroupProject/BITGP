@@ -10,7 +10,7 @@
 .candidate--next-prev {
   display: flex;
   justify-content: right;
-  margin: 2rem 0 0 0;
+  margin: 2rem 0 ;
 }
 
 .candidate-search-container {
@@ -25,7 +25,7 @@
 
 @media only screen and (max-width: 768px) {
   .candidate-search-container {
-    transform: scale(140%);
-    justify-content: center;
+    display: block;
+    padding: 0 10px;
   }
 }

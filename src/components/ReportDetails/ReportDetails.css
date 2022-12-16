@@ -55,16 +55,18 @@ input {
   .report-input-fields {
     flex-direction: column;
   }
-  .report-input-container {
+  .report-input-container, .report-input-comment {
     width: 100%;
+    margin: 0.5rem 0px;
   }
   .report-input-container > input {
     padding: 0.5rem;
+    width: 100%;
   }
   .report-input-container > select {
     padding: 0.5rem;
   }
   .report-textarea {
-    width: 105%;
+    width: 100%;
   }
 }
